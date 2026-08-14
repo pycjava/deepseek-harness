@@ -1,0 +1,43 @@
+appId: com.deepseek.dsh
+productName: DeepSeek Harness
+# Relative to apps/desktop.
+directories:
+  output: ../../dist-desktop/release
+# Only the Electron main/preload go into asar; the backend closure ships as
+# real files under resources/ so Cordis's runtime bare-imports resolve.
+files:
+  - src/main.cjs
+  - src/preload.cjs
+  - package.json
+extraResources:
+  - from: ../../dist-desktop/backend
+    to: backend
+    filter:
+      - '**/*'
+      - '!node_modules'
+  # electron-builder hard-excludes any `node_modules` directly under a
+  # matcher root (app-builder-lib out/util/filter.js), regardless of filter
+  # patterns. Mapping node_modules as its own from-root sidesteps that rule;
+  # nested node_modules inside packages still match '**/*' and are copied.
+  # The legacy hoisted layout keeps real files at the top level, so the .pnpm
+  # virtual store and .bin links (dot-entries, skipped by glob) are not
+  # needed at runtime.
+  - from: ../../dist-desktop/backend/node_modules
+    to: backend/node_modules
+    filter:
+      - '**/*'
+asar: true
+# Do NOT rebuild native modules for Electron's ABI: the backend runs under the
+# user's standalone Node, not Electron's. Keeping extraResources untouched
+# preserves the Node ABI the prebuilt addons were built against.
+nodeGypRebuild: false
+npmRebuild: false
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true

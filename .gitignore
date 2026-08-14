@@ -26,6 +26,10 @@ tmp/
 .idea
 mise.toml
 dist-exe/
+# Desktop packaging artifacts (scripts/build-desktop-backend.mjs + electron-builder).
+# `dist-desktop/backend/` is the symlink-free backend closure; `dist-desktop/release/`
+# is the electron-builder NSIS / win-unpacked output. Not part of the published packages.
+dist-desktop/
 python/sdk-runtime/src/deepseek_harness_runtime/runtime/dsh-jsonrpc-agent-*
 python/sdk-runtime/src/deepseek_harness_runtime/runtime/node/
 python/**/__pycache__/
@@ -38,3 +42,5 @@ apps/web/dist/
 worktrees/
 .agents/worktrees/
 .typert-*/
+# Local CLI cache from this workspace's own invocation.
+.zcode/
