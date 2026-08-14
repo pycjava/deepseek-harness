@@ -32,12 +32,15 @@ asar: true
 # preserves the Node ABI the prebuilt addons were built against.
 nodeGypRebuild: false
 npmRebuild: false
+# Arch comes from the invoking CLI flag (--x64 / --arm64; scripts/
+# build-desktop-installer.mjs always passes it, matching the closure's --arch).
+# A bare `electron-builder` run defaults to x64.
 win:
-  target:
-    - target: nsis
-      arch:
-        - x64
+  target: nsis
 nsis:
+  # Arch in the artifact name: both installers land in dist-desktop/release/
+  # sibling directories and users pick the right download by arch.
+  artifactName: ${productName}-${version}-${arch}-setup.${ext}
   oneClick: false
   perMachine: false
   allowToChangeInstallationDirectory: true

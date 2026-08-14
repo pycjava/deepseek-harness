@@ -135,7 +135,7 @@
     "release:publish": "tsx scripts/release/publish.ts",
     "dsh": "node --import tsx/esm apps/cli/src/bin.ts",
     "desktop": "electron apps/desktop",
-    "desktop:dist": "node scripts/build-desktop-backend.mjs && pnpm --filter @deepseek-ai/dsh-desktop run dist",
+    "desktop:dist": "node scripts/build-desktop-installer.mjs",
     "demo:code-mode": "node scripts/demo-code-mode.mjs",
     "demo:cordis": "node scripts/demo-cordis.mjs",
     "demo:acp": "node --import tsx packages/examples/acp-demo/src/bin.ts --config examples/acp-agent/cordis.yml",

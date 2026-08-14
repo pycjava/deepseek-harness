@@ -259,7 +259,13 @@ export function virtualManifest(virtual: string, name: string): VirtualManifest 
   const prefix = `${name.replace('/', '+')}@`
   const entry = readdirSync(virtual).find(dir => dir.startsWith(prefix))
   if (entry !== undefined) {
-    return JSON.parse(readFileSync(resolve(virtual, entry, 'node_modules', name, 'package.json'), 'utf8')) as VirtualManifest
+    const manifestPath = resolve(virtual, entry, 'node_modules', name, 'package.json')
+    // A filtered install (e.g. cross-arch `pnpm install --force` with
+    // supportedArchitectures) can leave the .pnpm entry skeleton without its
+    // payload; that entry is absent, not an error.
+    if (existsSync(manifestPath)) {
+      return JSON.parse(readFileSync(manifestPath, 'utf8')) as VirtualManifest
+    }
   }
   for (const dir of readdirSync(virtual)) {
     const candidate = resolve(virtual, dir, 'node_modules', name, 'package.json')

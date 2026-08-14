@@ -33,6 +33,13 @@ overrides:
   # consumer (electron's own install script included).
   '@electron/get': ^3.1.0
 
+# pnpm 11's before-run dependency check misreads the state `pnpm deploy` (the
+# desktop/exe packaging route) leaves behind and auto-runs a destructive
+# `pnpm install --production` that purges devDependencies. Off restores the
+# pnpm 10 behavior: a stale tree fails loudly at run time instead of being
+# silently reinstalled.
+verifyDepsBeforeRun: false
+
 peerDependencyRules:
   allowedVersions:
     typescript: '>=5 <7'
