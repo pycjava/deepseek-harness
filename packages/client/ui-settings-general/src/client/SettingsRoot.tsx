@@ -19,11 +19,31 @@ import {
 import type { SettingsRootComponentProps, SettingsSectionRow } from './shell-contract.ts'
 import css from './SettingsRoot.module.css'
 
+/** In-house usage/statistics glyph (axis frame + polyline); drawn locally
+ *  because ui-primitives carries no chart icon and platform modules are
+ *  compiled into the web shell, not this runtime bundle. */
+function IconChartLine16({ size = 16, className }: { size?: number | undefined; className?: string | undefined }) {
+  return (
+    <svg width={size} height={size} className={className} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1.2" y="1.4" width="1.4" height="13" rx="0.7" fill="currentColor" />
+      <rect x="1.2" y="13" width="13.4" height="1.4" rx="0.7" fill="currentColor" />
+      <path
+        d="M4 10.4L6.7 6.9L9 8.9L12.4 4.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 /** Nav glyph by section id; unknown ids fall back to the settings gear. */
 function navIcon(id: string) {
   if (id === 'models') return <IconDataOutline16 className={css.navIcon} size={16} />
   if (id === 'agent-presets') return <IconAgentPresetOutline16 className={css.navIcon} size={16} />
   if (id === 'plugins') return <IconPersonalizationOutline16 className={css.navIcon} size={16} />
+  if (id === 'usage') return <IconChartLine16 className={css.navIcon} size={16} />
   return <IconSettingsOutline16 className={css.navIcon} size={16} />
 }
 
