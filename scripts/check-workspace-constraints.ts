@@ -167,6 +167,9 @@ const packageFileExtras: Readonly<Record<string, readonly string[]>> = {
   '@deepseek-ai/dsh-experimental-inspector': ['lib/worker.js'],
   // The shipped preset compositions travel inside the roster package.
   '@deepseek-ai/dsh-agent-presets': ['presets'],
+  // The Hearthstone coach resolves its bundled card database relative to
+  // import.meta.url at runtime; the JSON data ships without a package export.
+  '@deepseek-ai/dsh-hscoach': ['data'],
   // The Web Host mounts the default-off settings owner independently of each
   // Agent-scoped delegation-tool instance.
   '@deepseek-ai/dsh-tool-subagent': ['lib/model-selection-settings.js'],

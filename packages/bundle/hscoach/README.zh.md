@@ -1,0 +1,105 @@
+---
+description: "独立炉石教练应用 profile：单个自包含插件行，监听 Power.log、本地计算合法局面快照，并经直连 DeepSeek 兼容 API 生成出牌建议。"
+kind: "package-bundle"
+---
+
+# `@deepseek-ai/dsh-hscoach`
+
+[English](README.md) | 中文
+
+## 概述
+
+`dsh --profile hscoach` 把炉石教练作为独立的 harness 应用运行。该 profile 的完整树是单个自包含插件行：监听游戏的 Power.log，本地计算合法可见快照与精确斩杀伤害，并调用 DeepSeek 兼容对话 API 为每个回合生成一条主推荐。建议、对局状态与胜负统计以 JSON 文件写出，供 NTEToolbox 悬浮窗消费。该 profile 不装载 agents、LLM、session、timer 等任何教练用不到的服务。
+
+## 目录
+
+- [使用本包](#use-this-package)
+- [理解实现](#understand-the-implementation)
+- [延伸阅读](#further-exploration)
+- [模型体验](#model-experience)
+- [已知限制与待办](#known-limitations-and-deferred-work)
+- [开发备注](#dev-note)
+
+-----
+
+<a id="use-this-package"></a>
+## 使用本包
+
+直接启动 shipped profile；模板在首次使用时自动初始化。通过 `DEEPSEEK_API_KEY`（或在 profile 的 `cordis.patch.yml` 里设置 `apiKey`）提供模型凭据。
+
+```sh
+dsh --profile hscoach
+```
+
+教练随即开始监听 Power.log（`autoStart: true`）。静态选项——发布目录、教练模式、API 端点、模型、watchdog 超时——按"显式配置键 > 环境变量 > 默认值"解析，见 [`src/index.ts`](src/index.ts) 中的 `resolveConfig`。运行时开关（`start`、`stop`、`think`、`mode`、`restore-log`、`status`）走 `/hscoach` 斜杠命令（仅当 profile 叠加了 commands 交互面时可用），或走悬浮窗的"再想想"按钮——它在发布目录写入 `think-again.trigger` 文件。
+
+发布目录默认为 `%LOCALAPPDATA%\com.ntetoolbox.client\hscoach`（NTEToolbox 的 Tauri identifier 目录）；`DSH_HSCOACH_PUBLISH_DIR` 或显式 `publishDir` 可覆盖。悬浮窗从该目录轮询 `advice.json`、`game_state.json`、`stats.json`。没有 API key 时教练仍可启动，并回显上一回合建议（标记降级）。
+
+用 `dsh plugin --profile hscoach` 在这棵树之上管理持久外部依赖；profile、home 与有序的 `--patch` 文件可以替换该行或在它上方插入更多行。shipped 模板仅在启动时应用补丁。
+
+-----
+
+<a id="understand-the-implementation"></a>
+## 理解实现
+
+<details>
+<summary>实现内部——点击展开</summary>
+
+bundle 的单次 insert 就是完整应用树：一行装载 bundle 自身所在的包。插件是 Cordis 函数插件，运行期保持零宿主包导入——宿主类型全部 `import type`——因此该行在任何能加载本包的树中都可激活。生命周期由 `ctx.effect` 与全局轮询定时器掌管；`/hscoach` 经惰性 `ctx.inject(['commands'])` 注册，commands 服务缺席时保持静默。
+
+确定性核心是纯本地计算：基于内置脱敏卡牌数据库的 Power.log 解析器、增量回合探测器、代码级强制隐藏信息合法性的序列化层（对手手牌只暴露数量；带标签的手牌实体中止序列化），以及保守的斩杀求解器（法力预算上的 0-1 背包 + 清嘲讽子集和——宁可漏报也绝不谎报斩杀）。建议生成是一次直连 `chat/completions` 调用（JSON 输出 + watchdog）；模型输出逐字段验证后才进入发布契约。
+
+### 源码地图
+
+| 文件 | 职责 |
+|---|---|
+| [`cordis.patch.yml`](cordis.patch.yml) | 完整独立 profile 树及其中性默认值 |
+| [`src/index.ts`](src/index.ts) | 插件入口：配置解析、编排、命令处理 |
+| [`src/core/`](src/core/) | 确定性核心：解析器、实体、状态序列化、斩杀、tail、战绩 |
+| [`src/advice/`](src/advice/) | 直连 API 建议生成器与教练 prompt |
+| [`src/runtime/engine.ts`](src/runtime/engine.ts) | 教练引擎：批处理、回合触发、latest-wins 发布 |
+| [`data/`](data/) | 内置脱敏 HearthstoneJSON 卡牌数据库（简中） |
+| — | 未发布运行期 invariant 伴随包；唯一的插入行拥有自己的运行期关系，且独立观测不可能偏离它独自计算的确定性核心。 |
+| [`tests/parity.spec.ts`](tests/parity.spec.ts) | 基于内置对局日志的黄金快照回归钉 |
+| [`tests/hscoach.spec.ts`](tests/hscoach.spec.ts) | 精确组合与独立树检查 |
+
+</details>
+
+-----
+
+<a id="further-exploration"></a>
+## 延伸阅读
+
+- [Base bundle](../base/README.zh.md) —— 本独立 profile 刻意省略的完整产品底座。
+- [SDK-minimal bundle](../sdk-minimal/README.zh.md) —— 另一个 shipped 的单 bundle 独立 profile。
+- [app-boot](../../boot/app-boot/README.zh.md) —— profile 如何被解析、分层与定制。
+
+-----
+
+<a id="model-experience"></a>
+## 模型体验
+
+无。该 profile 不运行任何 harness agent、不记录 session；教练自身的直连 DeepSeek 兼容调用从不进入模型请求或 Session 事件。
+
+#### KV 缓存影响
+
+稳定：该 profile 只挂载一行固定默认配置的插件，自身没有任何内容进入模型缓存。
+
+## 已知限制与待办
+
+<a id="known-limitations-and-deferred-work"></a>
+
+- **树内不随附交互面** —— `/hscoach` 命令仅在上方叠加 commands 交互面时激活；开箱即用的控制通道是再想想触发文件与 profile 重启。
+- **API 不可达时建议降级** —— key 缺失或请求超时会回显上一回合建议并标记降级，而非生成新建议。
+- **黄金对拍套件只有一份 fixture** —— 上游第二份 fixture（国服双局日志）从未被作者提交，无法迁移；国服怪癖（PowerTaskList 重复 CREATE_GAME、昵称映射）依赖解析器的单元测试而非冻结的端到端 golden。
+- **游戏发现面向 Windows** —— 炉石安装探测查询 Windows 注册表与 `%LOCALAPPDATA%`；解析器本身平台中立，但非 Windows 机器需显式指定日志路径才有意义。
+
+<a id="dev-note"></a>
+### 开发备注
+
+<details>
+<summary>维护者的工作上下文——点击展开</summary>
+
+本插件移植自 [pycjava/dsh-hscoach](https://github.com/pycjava/dsh-hscoach)（commit `c3c4f27`），并按仓库规范重塑：真实的 `@deepseek-ai/cordis` 与 `@deepseek-ai/dsh-commands` 类型取代上游的环境宿主桩；所有正则捕获组与记录索引读取带显式 undefined 守卫（`noUncheckedIndexedAccess`）。对拍 fixture `friendly_player_id_is_1.power.log` 从 NTEToolbox 仓库历史找回（已脱敏——无真实玩家名）。
+
+</details>

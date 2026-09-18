@@ -1,0 +1,5627 @@
+{
+ "fixture": "friendly_player_id_is_1.power.log",
+ "friendly_player_id": 1,
+ "triggered_turns": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15
+ ],
+ "turns": [
+  {
+   "turn": 1,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 1,
+    "current_player_id": 2,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 0,
+      "max_mana": 10,
+      "hand": [],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 28,
+      "fatigue": 0,
+      "played_cards": [],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 30,
+      "armor": 0,
+      "mana": 0,
+      "max_mana": 10,
+      "hand": {
+       "count": 0
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 28,
+      "fatigue": 0,
+      "played_cards": [],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 0,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 2,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 2,
+    "current_player_id": 1,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 0,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 24,
+      "fatigue": 0,
+      "played_cards": [],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 30,
+      "armor": 0,
+      "mana": 1,
+      "max_mana": 10,
+      "hand": {
+       "count": 5
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       }
+      ],
+      "deck_count": 24,
+      "fatigue": 0,
+      "played_cards": [],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 30,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 3,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 3,
+    "current_player_id": 2,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 1,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 1,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 23,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 30,
+      "armor": 0,
+      "mana": 1,
+      "max_mana": 10,
+      "hand": {
+       "count": 5
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       }
+      ],
+      "deck_count": 24,
+      "fatigue": 0,
+      "played_cards": [],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 0,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 4,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 4,
+    "current_player_id": 1,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 1,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 1,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 23,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 30,
+      "armor": 0,
+      "mana": 2,
+      "max_mana": 10,
+      "hand": {
+       "count": 4
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 23,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 30,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 5,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 5,
+    "current_player_id": 2,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 2,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 22,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 30,
+      "armor": 0,
+      "mana": 2,
+      "max_mana": 10,
+      "hand": {
+       "count": 4
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 23,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 0,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 6,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 6,
+    "current_player_id": 1,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 2,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 22,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 28,
+      "armor": 0,
+      "mana": 3,
+      "max_mana": 10,
+      "hand": {
+       "count": 7
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 2,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [
+         "已尽"
+        ],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 21,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 28,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 7,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 7,
+    "current_player_id": 2,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 3,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽",
+         "已尽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 20,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 25,
+      "armor": 0,
+      "mana": 3,
+      "max_mana": 10,
+      "hand": {
+       "count": 7
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 5,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [
+         "已尽"
+        ],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 21,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 0,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 8,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 8,
+    "current_player_id": 1,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 3,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 20,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 25,
+      "armor": 0,
+      "mana": 4,
+      "max_mana": 10,
+      "hand": {
+       "count": 6
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 5,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "EX1_002",
+        "name": "黑骑士",
+        "cost": 6,
+        "attack": 4,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "可交易\n战吼：消灭一个具有嘲讽的敌方随从。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 20,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 25,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 9,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 9,
+    "current_player_id": 2,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 4,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 19,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 22,
+      "armor": 0,
+      "mana": 4,
+      "max_mana": 10,
+      "hand": {
+       "count": 6
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 8,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "EX1_002",
+        "name": "黑骑士",
+        "cost": 6,
+        "attack": 4,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "可交易\n战吼：消灭一个具有嘲讽的敌方随从。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 20,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 0,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 10,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 10,
+    "current_player_id": 1,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 4,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 19,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 22,
+      "armor": 0,
+      "mana": 5,
+      "max_mana": 10,
+      "hand": {
+       "count": 6
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 8,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "EX1_002",
+        "name": "黑骑士",
+        "cost": 6,
+        "attack": 4,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "可交易\n战吼：消灭一个具有嘲讽的敌方随从。",
+        "damaged": 3,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "NEW1_038",
+        "name": "格鲁尔",
+        "cost": 8,
+        "attack": 8,
+        "health": 8,
+        "flags": [
+         "已尽"
+        ],
+        "text": "在每个回合结束时，获得+1/+1。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "NEW1_038o",
+        "name": "生长",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "格鲁尔正在变得更强......",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "deck_count": 19,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 22,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 11,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 11,
+    "current_player_id": 2,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 30,
+      "armor": 0,
+      "mana": 5,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽",
+         "已尽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 17,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 22,
+      "armor": 0,
+      "mana": 5,
+      "max_mana": 10,
+      "hand": {
+       "count": 6
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 8,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "EX1_002",
+        "name": "黑骑士",
+        "cost": 6,
+        "attack": 4,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "可交易\n战吼：消灭一个具有嘲讽的敌方随从。",
+        "damaged": 3,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "NEW1_038",
+        "name": "格鲁尔",
+        "cost": 8,
+        "attack": 9,
+        "health": 9,
+        "flags": [
+         "已尽"
+        ],
+        "text": "在每个回合结束时，获得+1/+1。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "NEW1_038o",
+        "name": "生长",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "格鲁尔正在变得更强......",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "deck_count": 19,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 0,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 12,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 12,
+    "current_player_id": 1,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 26,
+      "armor": 0,
+      "mana": 5,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 4,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 17,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 22,
+      "armor": 0,
+      "mana": 6,
+      "max_mana": 10,
+      "hand": {
+       "count": 6
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 8,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "EX1_002",
+        "name": "黑骑士",
+        "cost": 6,
+        "attack": 4,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "可交易\n战吼：消灭一个具有嘲讽的敌方随从。",
+        "damaged": 3,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "NEW1_038",
+        "name": "格鲁尔",
+        "cost": 8,
+        "attack": 10,
+        "health": 10,
+        "flags": [
+         "已尽"
+        ],
+        "text": "在每个回合结束时，获得+1/+1。",
+        "damaged": 4,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_016",
+        "name": "希尔瓦娜斯·风行者",
+        "cost": 6,
+        "attack": 5,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "亡语：随机夺取一个敌方随从的控制权。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "NEW1_038o",
+        "name": "生长",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "格鲁尔正在变得更强......",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       }
+      ],
+      "deck_count": 18,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_123e",
+        "name": "变形",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "随机变成一张随从牌。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 22,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 13,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 13,
+    "current_player_id": 2,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 28,
+      "armor": 0,
+      "mana": 6,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 2,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [
+         "已尽"
+        ],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "OG_338",
+        "name": "阴暗渔夫纳特",
+        "cost": 2,
+        "attack": 2,
+        "health": 4,
+        "flags": [
+         "已尽"
+        ],
+        "text": "你的对手在回合开始时，有50%的几率额外抽一张牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 16,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 22,
+      "armor": 0,
+      "mana": 6,
+      "max_mana": 10,
+      "hand": {
+       "count": 6
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 8,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "EX1_002",
+        "name": "黑骑士",
+        "cost": 6,
+        "attack": 4,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "可交易\n战吼：消灭一个具有嘲讽的敌方随从。",
+        "damaged": 3,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "NEW1_038",
+        "name": "格鲁尔",
+        "cost": 8,
+        "attack": 11,
+        "health": 11,
+        "flags": [
+         "已尽"
+        ],
+        "text": "在每个回合结束时，获得+1/+1。",
+        "damaged": 4,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_016",
+        "name": "希尔瓦娜斯·风行者",
+        "cost": 6,
+        "attack": 5,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "亡语：随机夺取一个敌方随从的控制权。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "NEW1_038o",
+        "name": "生长",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "格鲁尔正在变得更强......",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       }
+      ],
+      "deck_count": 18,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_123e",
+        "name": "变形",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "随机变成一张随从牌。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 0,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 14,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 14,
+    "current_player_id": 1,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 8,
+      "armor": 0,
+      "mana": 6,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 22,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [
+         "已尽"
+        ],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "OG_338",
+        "name": "阴暗渔夫纳特",
+        "cost": 2,
+        "attack": 2,
+        "health": 4,
+        "flags": [
+         "已尽"
+        ],
+        "text": "你的对手在回合开始时，有50%的几率额外抽一张牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 16,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 22,
+      "armor": 0,
+      "mana": 7,
+      "max_mana": 10,
+      "hand": {
+       "count": 5
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 8,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_002",
+        "name": "黑骑士",
+        "cost": 6,
+        "attack": 4,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "可交易\n战吼：消灭一个具有嘲讽的敌方随从。",
+        "damaged": 3,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "NEW1_038",
+        "name": "格鲁尔",
+        "cost": 8,
+        "attack": 8,
+        "health": 8,
+        "flags": [
+         "已尽"
+        ],
+        "text": "在每个回合结束时，获得+1/+1。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "NEW1_038",
+        "name": "格鲁尔",
+        "cost": 8,
+        "attack": 12,
+        "health": 12,
+        "flags": [
+         "已尽"
+        ],
+        "text": "在每个回合结束时，获得+1/+1。",
+        "damaged": 4,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_016",
+        "name": "希尔瓦娜斯·风行者",
+        "cost": 6,
+        "attack": 5,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "亡语：随机夺取一个敌方随从的控制权。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "NEW1_038o",
+        "name": "生长",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "格鲁尔正在变得更强......",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "NEW1_038o",
+        "name": "生长",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "格鲁尔正在变得更强......",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "deck_count": 17,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_123e",
+        "name": "变形",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "随机变成一张随从牌。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 22,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  },
+  {
+   "turn": 15,
+   "friendly_player_id": 1,
+   "snapshot": {
+    "turn": 15,
+    "current_player_id": 2,
+    "players": {
+     "1": {
+      "name": "玩家1",
+      "health": 10,
+      "armor": 0,
+      "mana": 7,
+      "max_mana": 10,
+      "hand": [
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_572",
+        "name": "伊瑟拉",
+        "cost": 9,
+        "attack": 4,
+        "health": 12,
+        "flags": [],
+        "text": "在你的回合结束时，随机获取两张梦境牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_317",
+        "name": "黑龙领主死亡之翼",
+        "cost": 10,
+        "attack": 12,
+        "health": 12,
+        "flags": [],
+        "text": "亡语：将你手牌中所有的龙牌置入战场。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "board": [
+       {
+        "card_id": "HERO_09",
+        "name": "安度因·乌瑞恩",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 20,
+        "card_type": "HERO",
+        "card_class": "PRIEST"
+       },
+       {
+        "card_id": "CS1h_001",
+        "name": "CS1h_001",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [
+         "已尽"
+        ],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "OG_338",
+        "name": "阴暗渔夫纳特",
+        "cost": 2,
+        "attack": 2,
+        "health": 4,
+        "flags": [
+         "已尽"
+        ],
+        "text": "你的对手在回合开始时，有50%的几率额外抽一张牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       }
+      ],
+      "deck_count": 15,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "OG_338",
+        "name": "阴暗渔夫纳特",
+        "cost": 2,
+        "attack": 2,
+        "health": 4,
+        "flags": [],
+        "text": "你的对手在回合开始时，有50%的几率额外抽一张牌。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "KAR_061",
+        "name": "馆长",
+        "cost": 7,
+        "attack": 4,
+        "health": 6,
+        "flags": [
+         "嘲讽"
+        ],
+        "text": "嘲讽。战吼：抽取野兽牌，龙牌和鱼人牌各一张。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "CFM_621",
+        "name": "卡扎库斯",
+        "cost": 4,
+        "attack": 3,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：如果你的牌库里没有相同的牌，则为你创建一个自定义\n法术。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "GAME_005",
+        "name": "幸运币",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，获得一个\n法力水晶。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     },
+     "2": {
+      "name": "玩家2",
+      "health": 22,
+      "armor": 0,
+      "mana": 7,
+      "max_mana": 10,
+      "hand": {
+       "count": 5
+      },
+      "board": [
+       {
+        "card_id": "HERO_07",
+        "name": "古尔丹",
+        "cost": null,
+        "attack": null,
+        "health": 30,
+        "flags": [],
+        "text": "",
+        "damaged": 8,
+        "card_type": "HERO",
+        "card_class": "WARLOCK"
+       },
+       {
+        "card_id": "CS2_056",
+        "name": "CS2_056",
+        "cost": 2,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": "HERO_POWER",
+        "card_class": null
+       },
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [
+         "已尽"
+        ],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "NEW1_038",
+        "name": "格鲁尔",
+        "cost": 8,
+        "attack": 9,
+        "health": 9,
+        "flags": [
+         "已尽"
+        ],
+        "text": "在每个回合结束时，获得+1/+1。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "NEW1_038",
+        "name": "格鲁尔",
+        "cost": 8,
+        "attack": 13,
+        "health": 13,
+        "flags": [
+         "已尽"
+        ],
+        "text": "在每个回合结束时，获得+1/+1。",
+        "damaged": 4,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_016",
+        "name": "希尔瓦娜斯·风行者",
+        "cost": 6,
+        "attack": 5,
+        "health": 5,
+        "flags": [
+         "已尽"
+        ],
+        "text": "亡语：随机夺取一个敌方随从的控制权。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends002e",
+        "name": "抽出穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在第一、第三和第五回合抽出穷追猛打",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "TB_Superfriends001e",
+        "name": "意气风发",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "在本回合中，你使用的下一张传说卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "ROGUE"
+       },
+       {
+        "card_id": "NEW1_038o",
+        "name": "生长",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "格鲁尔正在变得更强......",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": null,
+        "name": "未知卡牌",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "",
+        "damaged": null,
+        "card_type": null,
+        "card_class": null
+       },
+       {
+        "card_id": "NEW1_038o",
+        "name": "生长",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "格鲁尔正在变得更强......",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "deck_count": 17,
+      "fatigue": 0,
+      "played_cards": [
+       {
+        "card_id": "GVG_120",
+        "name": "赫米特·奈辛瓦里",
+        "cost": 5,
+        "attack": 6,
+        "health": 3,
+        "flags": [],
+        "text": "战吼：\n消灭一个野兽。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "EX1_002",
+        "name": "黑骑士",
+        "cost": 6,
+        "attack": 4,
+        "health": 5,
+        "flags": [],
+        "text": "可交易\n战吼：消灭一个具有嘲讽的敌方随从。",
+        "damaged": null,
+        "card_type": "MINION",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "OG_123e",
+        "name": "变形",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "随机变成一张随从牌。",
+        "damaged": null,
+        "card_type": "ENCHANTMENT",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       },
+       {
+        "card_id": "TB_Superfriends001",
+        "name": "穷追猛打",
+        "cost": null,
+        "attack": null,
+        "health": null,
+        "flags": [],
+        "text": "你使用的下一张传说卡牌及其复制卡牌的法力值消耗减少（3）点。",
+        "damaged": null,
+        "card_type": "SPELL",
+        "card_class": "NEUTRAL"
+       }
+      ],
+      "secrets": 0,
+      "possible_secrets": []
+     }
+    }
+   },
+   "lethal": {
+    "available_damage": 0,
+    "lethal": false,
+    "detail": [],
+    "deficit": 0,
+    "taunt_blocked": false,
+    "taunt_cost": 0,
+    "opponent_fatigue_damage": null,
+    "summary": "本回合无确定直接伤害（场攻 0）。"
+   }
+  }
+ ],
+ "game_results": [
+  "loss"
+ ]
+}

@@ -1,0 +1,26 @@
+# The standalone Hearthstone coach application. Like the sdk-minimal bundle,
+# this patch does not layer over dsh-base: this insert is the complete Cordis
+# tree. The coach plugin is self-contained (its own Power.log tail, its own
+# direct DeepSeek-compatible advice calls, no agents/LLM/session services),
+# so the application tree is exactly one row; user profile, home, and
+# invocation patches still apply above it.
+
+- insert:
+    - id: hscoach
+      name: '@deepseek-ai/dsh-hscoach'
+      config:
+        # Empty publishDir resolves to the NTEToolbox overlay directory
+        # (%LOCALAPPDATA%\com.ntetoolbox.client\hscoach); see resolvePublishDir.
+        publishDir: ''
+        # teach / compete / silent; friendlyPlayerId stays unset for
+        # automatic calibration from the watched game log.
+        coachMode: teach
+        # Empty apiKey / baseURL / model fall back to DEEPSEEK_API_KEY,
+        # DEEPSEEK_BASE_URL, and deepseek-chat respectively.
+        apiKey: ''
+        baseURL: ''
+        model: ''
+        adviceTimeoutMs: 15000
+        # Empty cardDataDir uses the bundled data/ card database.
+        cardDataDir: ''
+        autoStart: true

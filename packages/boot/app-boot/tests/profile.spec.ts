@@ -224,6 +224,10 @@ describe('loadProfile', () => {
       bundles: ['@deepseek-ai/dsh-sdk-minimal'],
       patchReload: 'startup',
     })
+    expect(PROFILE_TEMPLATES.hscoach).toEqual({
+      bundles: ['@deepseek-ai/dsh-hscoach'],
+      patchReload: 'startup',
+    })
     try {
       loadProfile('t', 'web', anchor, home)
     } catch {
