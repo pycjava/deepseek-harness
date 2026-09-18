@@ -1,7 +1,7 @@
 {
   "name": "@deepseek-ai/dsh-hscoach",
   "description": "The standalone Hearthstone coach profile bundle: one self-contained plugin row watching Power.log, computing legal game snapshots, and generating turn advice over the direct DeepSeek-compatible API",
-  "version": "0.1.6-alpha.1",
+  "version": "0.1.6-alpha.2",
   "publishConfig": {
     "access": "public"
   },

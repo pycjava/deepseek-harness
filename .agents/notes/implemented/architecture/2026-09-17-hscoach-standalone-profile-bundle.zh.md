@@ -40,3 +40,11 @@ Status: implemented
 - `hscoach stop` 与 tail 崩溃都释放锁（tail 崩溃不释放会把进程锁在自己的重启之外）；`start` 先等待上一次释放落定再重新抢占，stop/start 循环不会撞上自己的 unlink。
 - 锁冲突拒绝经 `/hscoach start` 返回错误、autoStart 启动时打印控制台告警；应用保持存活但不监听。
 - 同一场实跑还暴露了 tail 的幻影记账路径：被监听的时间戳目录被删除后，路径解析回退到更旧的日志，切换时会把旧文件从头重读——旧对局被重新记入 `history.jsonl`。现在 tail 仅在解析到的文件比上次消费的文件更新（新对局目录）时才从头读；回退到更旧的文件（日志清理）从末尾续读，不重放任何对局。
+
+## 后续：独立 Cordis 部署与打包产物的卡牌库定位修复（2026-09-19）
+
+教练现在可以作为自己的 harness 运行，完全不涉及 dsh CLI、桌面版或 `~/.dsh`：三个本地 tarball（`vendor/cordis`、`vendor/cosmokit`、bundle 包）以 `file:` 依赖安装，外加一个极简入口——创建裸 `Context`、直挂插件函数、信号接到 `ctx.fiber.dispose()`。筹备该部署暴露了一个只有安装产物才会踩中的缺陷：`defaultDataDirs` 按模块上跳两级计算包根，对 `src/core/` 正确，对 tsdown 打平的 `lib/index.js` 多跳了一级——每个 packed-tarball 消费者都找不到卡牌数据库；源码启动和 dsh CLI 从不走打包产物，所以从未暴露。
+
+- `dataDirsFor(moduleUrl)` 现在同时返回源码布局与打包布局的包根，按存在性依次尝试（机制不变）；`defaultDataDirs` 以 `import.meta.url` 委托。
+- 在安装产物上端到端验证：卡牌库从打包副本加载（35713 张）；对存活持有者锁拒绝；持有者死亡后锁接管；演示对局每个发布产物恰好写一份；think-again 触发文件被消费；删除演示目录后零重放。profile 启动路径未变。
+- 独立部署是包的消费者，不是仓库面：仓库不为它提供 bin（应用启动权仍归 dsh profile）；bundle README 记录了 pack-and-mount 配方。

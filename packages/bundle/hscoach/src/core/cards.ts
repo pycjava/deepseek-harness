@@ -56,11 +56,20 @@ interface RawCard {
 
 /**
  * 卡库数据目录：随插件分发的 data/（HearthstoneJSON 简中全卡 + 收集卡）。
+ * @param moduleUrl - 卡牌模块的 import.meta.url。
+ * @returns 候选数据目录路径列表（源码 src/core/ 上跳两级到包根，打包后的
+ * lib/index.js 上跳一级；按存在性依次尝试）。
+ */
+export function dataDirsFor(moduleUrl: string): string[] {
+  const pkgDir = dirname(fileURLToPath(moduleUrl)) // …/src/core 或 …/lib
+  return [join(resolve(pkgDir, '..', '..'), 'data'), join(resolve(pkgDir, '..'), 'data')]
+}
+
+/** 默认数据目录候选：以本模块位置调用 {@link dataDirsFor}。
  * @returns 候选数据目录路径列表。
  */
 export function defaultDataDirs(): string[] {
-  const pkgDir = dirname(fileURLToPath(import.meta.url)) // …/lib/core 或 …/src/core
-  return [join(resolve(pkgDir, '..', '..'), 'data')]
+  return dataDirsFor(import.meta.url)
 }
 
 /** 内存卡牌知识库：加载 HearthstoneJSON 数据文件并提供按 id 查询。 */

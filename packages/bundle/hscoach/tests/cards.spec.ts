@@ -6,7 +6,7 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it, afterEach } from 'vitest'
-import { CardDatabase, cleanText, defaultDataDirs } from '../src/core/cards.ts'
+import { CardDatabase, cleanText, dataDirsFor, defaultDataDirs } from '../src/core/cards.ts'
 
 const DATA = join(import.meta.dirname, '..', 'data')
 
@@ -32,7 +32,11 @@ describe('cleanText', () => {
 
 describe('defaultDataDirs', () => {
   it('指向包内 data 目录', () => {
-    expect(defaultDataDirs()).toEqual([DATA])
+    expect(defaultDataDirs()).toContain(DATA)
+  })
+  it('源码 src/core 与打包 lib/index.js 两种模块位置都指向包根 data', () => {
+    expect(dataDirsFor(new URL('../src/core/cards.ts', import.meta.url).href)).toContain(DATA)
+    expect(dataDirsFor(new URL('../lib/index.js', import.meta.url).href)).toContain(DATA)
   })
 })
 

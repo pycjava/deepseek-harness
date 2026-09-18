@@ -39,6 +39,8 @@ Before listening starts, the coach takes a single-instance lock `hscoachd.lock` 
 
 Use `dsh plugin --profile hscoach` to manage persistent external dependencies on top of this tree; profile, home, and ordered `--patch` files can replace the row or insert more rows above it. The shipped template applies patches only at startup.
 
+Running outside dsh entirely is also supported: the plugin is self-contained, so a bare Cordis root context mounts it directly. After `pnpm run build`, run `pnpm pack` on `vendor/cordis`, `vendor/cosmokit`, and this package, install the three tarballs as `file:` dependencies in a target directory, and boot with a minimal entry script — `new Context()`, `await ctx.plugin(hscoach, config)`, and signals wired to `ctx.fiber.dispose()`. Config handed to the entry resolves through the same `resolveConfig`; the single-instance lock, console output, and publish contract behave exactly as under the profile launch. The repo ships no launcher bin for this path (application launch stays a dsh-profile right).
+
 -----
 
 <a id="understand-the-implementation"></a>

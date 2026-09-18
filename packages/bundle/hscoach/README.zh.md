@@ -39,6 +39,8 @@ dsh --profile hscoach
 
 用 `dsh plugin --profile hscoach` 在这棵树之上管理持久外部依赖；profile、home 与有序的 `--patch` 文件可以替换该行或在它上方插入更多行。shipped 模板仅在启动时应用补丁。
 
+也支持完全脱离 dsh 运行：插件自包含，裸 Cordis 根上下文即可直挂。`pnpm run build` 后对 `vendor/cordis`、`vendor/cosmokit` 与本包各执行 `pnpm pack`，把三个 tarball 以 `file:` 依赖装进目标目录，再用一个极简入口启动——`new Context()`、`await ctx.plugin(hscoach, config)`，信号接到 `ctx.fiber.dispose()`。交给入口的配置同样经 `resolveConfig` 解析；单实例锁、控制台输出与发布契约和 profile 启动完全一致。仓库不为该路径提供启动 bin（应用启动权仍归 dsh profile）。
+
 -----
 
 <a id="understand-the-implementation"></a>
