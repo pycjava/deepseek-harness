@@ -5,7 +5,9 @@
  * - 每次轮询重解析路径：国服每次启动新建 Logs/<时间戳>/ 目录
  * - 文件轮换检测：创建时间变化或大小倒退 → 从头读
  * - 启动时文件已存在 → 从末尾 tail（不重放历史对局）；
- *   文件"首次出现"或轮换 → 从头读（含 CREATE_GAME，跨局状态才能重置）
+ *   文件"首次出现"或切换到更新的文件（新对局日志）→ 从头读（含
+ *   CREATE_GAME，跨局状态才能重置）；切换/回退到更旧的文件（监听目录
+ *   被清理）→ 从末尾续读，不重放旧对局（否则历史战绩被重复记账）
  */
 import { open, stat } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
@@ -107,11 +109,7 @@ export class PowerLogTail {
     try {
       while (!this.stopped && !this.shouldStop()) {
         const path = await this.resolvePath()
-        /* v8 ignore next -- 切换臂由路径切换测试行使；分支计数覆盖工具无法归因 */
-        if (reader.currentPath !== null && reader.currentPath !== path) {
-          // 国服重启后新时间戳目录 → 切换并从头读
-          justAppeared = true
-        }
+        const pathSwitched = reader.currentPath !== null && reader.currentPath !== path
 
         if (!existsSync(path)) {
           await reader.close()
@@ -133,7 +131,8 @@ export class PowerLogTail {
         }
 
         if (reader.currentPath === null) {
-          await reader.openAt(path, justAppeared)
+          // 文件（重）现：仅当比上次消费的文件更新（新对局日志）才从头读
+          await reader.openAt(path, justAppeared && fileStat.ctimeMs > lastCtime)
           justAppeared = false
           lastCtime = fileStat.ctimeMs
           lastSize = fileStat.size
@@ -145,7 +144,9 @@ export class PowerLogTail {
               : fileStat.size < lastSize
           /* v8 ignore stop */
           if (rotated) {
-            await reader.openAt(path, true)
+            // 切换到更新的文件（国服新时间戳目录）从头读；回退到更旧的文件
+            // （监听目录被清理）从末尾续读，不重放旧对局
+            await reader.openAt(path, pathSwitched ? fileStat.ctimeMs > lastCtime : true)
           }
           lastCtime = fileStat.ctimeMs
           lastSize = fileStat.size

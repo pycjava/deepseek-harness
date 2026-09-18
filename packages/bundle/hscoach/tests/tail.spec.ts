@@ -117,6 +117,74 @@ describe('PowerLogTail', () => {
     expect(harness.flat().some(l => l.includes('from-one'))).toBe(true)
   }, 10_000)
 
+  it('路径切换到更新的现存文件 → 从头读（新对局目录）', async () => {
+    const stale = join(dir, 'z-stale', 'Power.log')
+    const fresh = join(dir, 'a-fresh', 'Power.log')
+    await mkdir(join(dir, 'z-stale'), { recursive: true })
+    await mkdir(join(dir, 'a-fresh'), { recursive: true })
+    await writeFile(stale, 'D 08:00:00.000 stale-game\n', 'utf8')
+    let switched = false
+    const harness = makeTail({
+      nextPath: () => (switched ? fresh : stale),
+      until: flat => flat.some(l => l.includes('new-game')),
+      maxTicks: 60,
+    })
+    void (async () => {
+      // 新对局目录在监听开始后出现（创建时间更晚）
+      await delay(8)
+      await writeFile(fresh, 'D 09:00:00.000 new-game\n', 'utf8')
+      switched = true
+    })()
+    await harness.run
+    expect(harness.flat().some(l => l.includes('new-game'))).toBe(true)
+  }, 10_000)
+
+  it('路径回退到更旧的现存文件 → 从末尾续读，不重放旧对局', async () => {
+    const stale = join(dir, 'z-stale', 'Power.log')
+    const fresh = join(dir, 'a-fresh', 'Power.log')
+    await mkdir(join(dir, 'z-stale'), { recursive: true })
+    await mkdir(join(dir, 'a-fresh'), { recursive: true })
+    await writeFile(stale, 'D 08:00:00.000 stale-game\n', 'utf8')
+    await delay(20)
+    await writeFile(fresh, 'D 09:00:00.000 live-game\n', 'utf8')
+    let fallback = false
+    const harness = makeTail({
+      nextPath: () => (fallback ? stale : fresh),
+      maxTicks: 50,
+    })
+    void (async () => {
+      await delay(15)
+      fallback = true
+    })()
+    await harness.run
+    expect(harness.flat().some(l => l.includes('stale-game'))).toBe(false)
+  }, 10_000)
+
+  it('缺失窗口后回退到更旧的文件 → 从末尾续读（监听目录被清理）', async () => {
+    const stale = join(dir, 'z-stale', 'Power.log')
+    const fresh = join(dir, 'a-fresh', 'Power.log')
+    const missing = join(dir, 'gone', 'Power.log')
+    await mkdir(join(dir, 'z-stale'), { recursive: true })
+    await mkdir(join(dir, 'a-fresh'), { recursive: true })
+    await writeFile(stale, 'D 08:00:00.000 stale-game\n', 'utf8')
+    await delay(20)
+    await writeFile(fresh, 'D 09:00:00.000 live-game\n', 'utf8')
+    let stage = 0
+    const harness = makeTail({
+      nextPath: () => (stage === 0 ? fresh : stage === 1 ? missing : stale),
+      maxTicks: 80,
+    })
+    void (async () => {
+      await delay(10)
+      stage = 1
+      await rm(fresh, { force: true })
+      await delay(30)
+      stage = 2
+    })()
+    await harness.run
+    expect(harness.flat().some(l => l.includes('stale-game'))).toBe(false)
+  }, 10_000)
+
   it('大小倒退（轮换）→ 从头重读', async () => {
     const path = join(dir, 'Power.log')
     await writeFile(path, 'D 09:00:00.000 aaaaaaaaaaaaaaaaaaaa\nD 09:00:01.000 bbbbbbbbbbbbbbbbbbbb\n', 'utf8')
