@@ -26,9 +26,10 @@ import type { TailOptions } from './core/tail.ts'
 import { ADVICE_FILENAME, THINK_AGAIN_FILENAME } from './core/trigger.ts'
 import { CoachEngine } from './runtime/engine.ts'
 import type { AdviceProvider, EngineEvent } from './runtime/engine.ts'
+import { acquireInstanceLock, lockPath, readLockPid, type InstanceLock } from './runtime/lock.ts'
 import { DirectApiAdviceProvider } from './advice/directProvider.ts'
 import { COACH_MODES, DEFAULT_COACH_MODE } from './advice/prompts.ts'
-import { aggregate } from './core/history.ts'
+import { aggregate, localIsoSeconds } from './core/history.ts'
 
 /** API root default (official DeepSeek; /v1-compatible endpoints come from config.baseURL). */
 export const DEFAULT_BASE_URL = 'https://api.deepseek.com'
@@ -139,6 +140,8 @@ export class HsCoachPlugin {
   private engine: CoachEngine | null = null
   private db: CardDatabase | null = null
   private tail: PowerLogTail | null = null
+  private lock: InstanceLock | null = null
+  private lockRelease: Promise<void> | null = null
   private stopped = false
   private running = false
   private thinkAgainMtime = 0
@@ -164,12 +167,11 @@ export class HsCoachPlugin {
       this.cfg.cardDataDir ? [this.cfg.cardDataDir, ...defaultDataDirs()] : defaultDataDirs(),
     )
     await this.db.build()
-    this.ctx.logger.info(`dsh-hscoach: 卡牌库就绪（${this.db.size} 张）→ ${publishDir}`)
+    this.log(`卡牌库就绪（${this.db.size} 张）→ ${publishDir}`)
+    this.log(`教练：模式 ${this.cfg.coachMode}，模型 ${this.cfg.model}（${this.cfg.baseURL}）`)
 
     if (!this.cfg.apiKey) {
-      this.ctx.logger.warn(
-        'dsh-hscoach: 未配置 API key（config.apiKey 或环境变量 DEEPSEEK_API_KEY）——建议生成将降级',
-      )
+      this.emitWarn('未配置 API key（config.apiKey 或环境变量 DEEPSEEK_API_KEY）——建议生成将降级')
     }
 
     const provider: AdviceProvider = new DirectApiAdviceProvider({
@@ -211,7 +213,10 @@ export class HsCoachPlugin {
       this.shutdown()
     }, 'dsh-hscoach: shutdown')
 
-    if (this.cfg.autoStart) await this.start()
+    if (this.cfg.autoStart) {
+      const refused = await this.start()
+      if (refused) this.emitWarn(refused)
+    }
   }
 
   private handleEvent(event: EngineEvent): void {
@@ -223,10 +228,11 @@ export class HsCoachPlugin {
         this.log(`自动校准：友方玩家 id = ${event.friendlyPlayerId}`)
         break
       case 'advice-published':
+        /* v8 ignore next -- provider 恒 degraded=false；降级发布走 advice-degraded 事件 */
         this.log(`T${event.turn} 建议已发布（${event.latencyMs}ms${event.degraded ? '，降级' : ''}）：${event.headline}`)
         break
       case 'advice-degraded':
-        this.ctx.logger.warn(`dsh-hscoach: ${event.reason}`)
+        this.emitWarn(event.reason)
         break
       case 'game-result':
         this.log(`对局结束：${event.result}（T${event.turns}）→ ${event.stats.wins}胜${event.stats.losses}负（${event.stats.winrate_pct}%）`)
@@ -236,10 +242,26 @@ export class HsCoachPlugin {
     }
   }
 
+  /**
+   * 控制台直出（独立 profile 树不挂 console-logger，ctx.logger 无接收端；
+   * 生命周期事件必须让启动终端里的用户看得见）。
+   * @param message - 事件文本（无前缀）。
+   */
+  private emit(message: string): void {
+    console.log(`[hscoach ${localIsoSeconds().slice(11)}] ${message}`)
+  }
+
+  /** 控制台告警直出 + ctx.logger.warn（保留宿主侧诊断通道）。 */
+  private emitWarn(message: string): void {
+    console.error(`[hscoach ${localIsoSeconds().slice(11)}] ${message}`)
+    this.ctx.logger.warn(`dsh-hscoach: ${message}`)
+  }
+
   private log(message: string): void {
     this.events.push(message)
     /* v8 ignore next -- 200 条事件环上限需整场 200+ 对局事件，单局功能测试不构造 */
     if (this.events.length > 200) this.events.shift()
+    this.emit(message)
     this.ctx.logger.info(`dsh-hscoach: ${message}`)
   }
 
@@ -252,9 +274,12 @@ export class HsCoachPlugin {
       switch (verb) {
         case 'status':
           return { kind: 'success', text: await this.statusText() }
-        case 'start':
-          await this.start()
-          return { kind: 'success', text: '教练已开始监听 Power.log。' }
+        case 'start': {
+          const refused = await this.start()
+          return refused
+            ? { kind: 'error', text: refused }
+            : { kind: 'success', text: '教练已开始监听 Power.log。' }
+        }
         case 'stop':
           this.shutdownTail()
           return { kind: 'success', text: '教练已停止监听（战绩与建议文件保留）。' }
@@ -294,8 +319,9 @@ export class HsCoachPlugin {
 
   private async statusText(): Promise<string> {
     const publishDir = resolvePublishDir(this.cfg.publishDir)
-    /* v8 ignore next 2 -- db 在 init 内构建、引擎 id 恒有默认值，两个 ?? 兜底不可达 */
+    /* v8 ignore next -- db 在 init 内构建，?? 兜底不可达 */
     const deckSize = this.db?.size ?? 0
+    /* v8 ignore next -- 引擎构造时 friendlyPlayerId 已有默认值，?? 兜底不可达 */
     const friendlyId = this.engine?.getFriendlyPlayerId() ?? '自动校准'
     const lines = [
       `监听：${this.running ? '运行中' : '已停止'}`,
@@ -328,17 +354,37 @@ export class HsCoachPlugin {
     return lines.join('\n')
   }
 
-  private async start(): Promise<void> {
+  /**
+   * 启动监听：先抢发布目录单实例锁（同一目录同时只能有一个教练 tail，
+   * 否则同一局重复记账、发布文件互相覆盖），再尽力开启炉石日志、启动 tail。
+   * @returns 启动成功返回 null；拒绝原因（另一存活实例持有锁）返回给调用方展示。
+   */
+  private async start(): Promise<string | null> {
     /* v8 ignore next -- engine 为空的析取臂不可达（init 先于 start 装配） */
-    if (this.running || this.stopped || this.engine === null) return
+    if (this.running || this.stopped || this.engine === null) return null
+    // 等待上一次 stop 的锁释放落定，避免立即 start 撞上自己的旧锁
+    if (this.lockRelease) {
+      await this.lockRelease
+      this.lockRelease = null
+    }
+    const publishDir = resolvePublishDir(this.cfg.publishDir)
+    const lock = await acquireInstanceLock(publishDir)
+    if (lock === null) {
+      const holderPid = await readLockPid(lockPath(publishDir))
+      /* v8 ignore next -- 拒绝与重读之间锁文件消失的竞态臂 */
+      const pidText = holderPid === null ? '未知' : String(holderPid)
+      return `另一个教练实例正在运行（PID ${pidText}，锁 ${lockPath(publishDir)}），本次不启动监听。`
+    }
+    this.lock = lock
     // 尽力开启炉石日志（失败不阻断——用户可能没装炉石）
     try {
       const status = await this.deps.ensureLogConfig()
-      this.log(`log.config: ${status.action}`)
+      this.log(status.message)
     } catch (error: unknown) {
-      this.ctx.logger.warn(`dsh-hscoach: log.config 配置失败（${String(error)}）`)
+      this.emitWarn(`log.config 配置失败（${String(error)}）`)
     }
     const engine = this.engine
+    const logPath = await this.deps.resolveLogPath()
     const tail = new this.deps.tail({
       resolvePath: () => this.deps.resolveLogPath(),
       pollIntervalMs: 300,
@@ -348,16 +394,30 @@ export class HsCoachPlugin {
     this.tail = tail
     this.running = true
     void tail.run().catch((error: unknown) => {
+      this.emitWarn(`tail 异常退出：${String(error)}`)
       this.ctx.logger.error(`dsh-hscoach: tail 异常退出：${String(error)}`)
       this.running = false
+      // tail 已死：让出单实例锁，start 才能重试
+      this.releaseLock()
     })
-    this.log('开始监听 Power.log（打开炉石打一局即开始）')
+    this.log(`开始监听 ${logPath}（打开炉石打一局即开始）`)
+    return null
+  }
+
+  /** 让出单实例锁（tail 停止或崩溃时调用；start 重试前等待释放落定）。 */
+  private releaseLock(): void {
+    if (this.lock) {
+      const lock = this.lock
+      this.lock = null
+      this.lockRelease = lock.release()
+    }
   }
 
   private shutdownTail(): void {
     this.running = false
     this.tail?.stop()
     this.tail = null
+    this.releaseLock()
   }
 
   private shutdown(): void {
@@ -386,6 +446,7 @@ export class HsCoachPlugin {
       /* v8 ignore next -- existsSync 与 statSync 之间的删除竞态在进程内不可观测 */
       return
     }
+    /* v8 ignore next -- 仅在触发文件删除失败后同 mtime 重访时可达 */
     if (mtime === this.thinkAgainMtime) return
     this.thinkAgainMtime = mtime
     try {

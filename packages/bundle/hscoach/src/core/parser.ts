@@ -611,7 +611,7 @@ export class GameParser {
       const item = this.deferredTagChanges[i]
       /* v8 ignore next -- i 受数组长度约束，元素必存在 */
       if (item === undefined) break
-      /* v8 ignore next 2 -- 回放时未解析项按序跳过；分支计数覆盖工具无法归因 */
+      /* v8 ignore next -- 回放时未解析项按序跳过；分支计数覆盖工具无法归因 */
       if (item.ref.entityId === null) {
         i += 1
         continue

@@ -35,6 +35,8 @@ dsh --profile hscoach
 
 发布目录默认为 `%LOCALAPPDATA%\com.ntetoolbox.client\hscoach`（NTEToolbox 的 Tauri identifier 目录）；`DSH_HSCOACH_PUBLISH_DIR` 或显式 `publishDir` 可覆盖。悬浮窗从该目录轮询 `advice.json`、`game_state.json`、`stats.json`。没有 API key 时教练仍可启动，并回显上一回合建议（标记降级）。
 
+启动监听前会在发布目录抢占单实例锁 `hscoachd.lock`（内容为持有者 PID；持有者进程已死则自动接管，崩溃残留自愈）。锁被存活实例持有时，本次启动拒绝监听并在控制台说明原因。早于锁机制的旧构建不读锁，与其并行仍会重复记录——发现同一局在 `history.jsonl` 出现两条记录时，先排查其他实例（含桌面版内嵌的旧 profile 会话）。独立树不装载 console-logger，生命周期事件（卡牌库就绪、监听路径、对局开始/结束、降级原因）由插件直接打印到控制台。
+
 用 `dsh plugin --profile hscoach` 在这棵树之上管理持久外部依赖；profile、home 与有序的 `--patch` 文件可以替换该行或在它上方插入更多行。shipped 模板仅在启动时应用补丁。
 
 -----
@@ -58,6 +60,7 @@ bundle 的单次 insert 就是完整应用树：一行装载 bundle 自身所在
 | [`src/core/`](src/core/) | 确定性核心：解析器、实体、状态序列化、斩杀、tail、战绩 |
 | [`src/advice/`](src/advice/) | 直连 API 建议生成器与教练 prompt |
 | [`src/runtime/engine.ts`](src/runtime/engine.ts) | 教练引擎：批处理、回合触发、latest-wins 发布 |
+| [`src/runtime/lock.ts`](src/runtime/lock.ts) | 发布目录单实例锁：PID 存活检测、陈旧锁自愈 |
 | [`data/`](data/) | 内置脱敏 HearthstoneJSON 卡牌数据库（简中） |
 | — | 未发布运行期 invariant 伴随包；唯一的插入行拥有自己的运行期关系，且独立观测不可能偏离它独自计算的确定性核心。 |
 | [`tests/parity.spec.ts`](tests/parity.spec.ts) | 基于内置对局日志的黄金快照回归钉 |

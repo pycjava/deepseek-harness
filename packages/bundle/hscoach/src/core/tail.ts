@@ -107,7 +107,7 @@ export class PowerLogTail {
     try {
       while (!this.stopped && !this.shouldStop()) {
         const path = await this.resolvePath()
-        /* v8 ignore next 2 -- 切换臂由路径切换测试行使；分支计数覆盖工具无法归因 */
+        /* v8 ignore next -- 切换臂由路径切换测试行使；分支计数覆盖工具无法归因 */
         if (reader.currentPath !== null && reader.currentPath !== path) {
           // 国服重启后新时间戳目录 → 切换并从头读
           justAppeared = true

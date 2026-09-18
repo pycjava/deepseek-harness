@@ -3,7 +3,7 @@
  * init 装配 → /hscoach 命令 → 日志喂入 → 直连 API 建议（fetch 桩）→
  * 发布文件；再想想触发文件；mode 切换；start/stop。
  */
-import { describe, expect, it, beforeEach, afterEach } from 'vitest'
+import { describe, expect, it, beforeEach, afterEach, vi, type MockInstance } from 'vitest'
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -55,6 +55,8 @@ let polls: Array<() => void>
 let fetchCalls: Array<{ url: string; init: { headers: Record<string, string>; body: string } }>
 let releaseAdvice: (() => void) | null = null
 let adviceGate: Promise<void>
+let consoleLog: MockInstance<typeof console.log>
+let consoleError: MockInstance<typeof console.error>
 
 function jsonResponse(headline: string): ResponseLike {
   return {
@@ -119,6 +121,14 @@ async function command(_plugin: HsCoachPlugin, raw: string) {
   return cmd.handler({ rawInput: raw })
 }
 
+/** 多实例同 ctx 时按注册序取命令（1 = 第一个实例，2 = 第二个实例）。 */
+async function commandNth(nth: number, raw: string) {
+  const regs = ctx.commands.registrations.filter(r => r.name === 'hscoach')
+  const cmd = regs[nth - 1]
+  if (!cmd) throw new Error(`/hscoach 第 ${nth} 个注册不存在`)
+  return cmd.handler({ rawInput: raw })
+}
+
 async function waitUntil(predicate: () => boolean, timeoutMs = 3000): Promise<void> {
   for (let i = 0; i < timeoutMs / 10 && !predicate(); i++) {
     await new Promise(r => setTimeout(r, 10))
@@ -138,9 +148,13 @@ beforeEach(async () => {
   releaseAdvice = null
   adviceGate = new Promise<void>(r => (releaseAdvice = r))
   ctx = new StubContext()
+  // 生命周期事件直出控制台：测试静音并捕获以断言
+  consoleLog = vi.spyOn(console, 'log').mockImplementation(() => {})
+  consoleError = vi.spyOn(console, 'error').mockImplementation(() => {})
 })
 
 afterEach(async () => {
+  vi.restoreAllMocks()
   await rm(dir, { recursive: true, force: true })
 })
 
@@ -527,6 +541,57 @@ describe('dsh-hscoach 插件终批分支', () => {
   it('resolveConfig 的 NaN 与非法类型友好方 id 回退未设置', () => {
     expect(resolveConfig({ friendlyPlayerId: Number.NaN }).friendlyPlayerId).toBeUndefined()
     expect(resolveConfig({ friendlyPlayerId: 'x' as unknown as number }).friendlyPlayerId).toBeUndefined()
+  })
+
+  it('单实例锁：同发布目录第二个实例 autoStart 拒绝启动（不建 tail、不覆盖锁）', async () => {
+    const first = await makePlugin()
+    expect(FakeTail.instances.length).toBe(1)
+    await makePlugin()
+    // 第二实例被锁拒绝：无新 tail，锁仍归第一实例持有
+    expect(FakeTail.instances.length).toBe(1)
+    expect(ctx.logs.some(l => l.message.includes('另一个教练实例正在运行'))).toBe(true)
+    const warned = consoleError.mock.calls.map(c => String(c[0])).join('\n')
+    expect(warned).toContain('另一个教练实例正在运行')
+    expect(warned).toContain(`PID ${process.pid}`)
+    const lockText = await readFile(join(dir, 'hscoachd.lock'), 'utf-8')
+    expect(lockText).toBe(String(process.pid))
+    await command(first, 'stop')
+    // 第一实例停止释放锁后，第二实例 start 成功
+    const retry = await commandNth(2, 'start')
+    expect(retry.kind).toBe('success')
+    expect(FakeTail.instances.length).toBe(2)
+    await commandNth(2, 'stop')
+  }, 30000)
+
+  it('单实例锁：hscoach start 在锁被占时返回错误文案', async () => {
+    const first = await makePlugin()
+    await makePlugin({ autoStart: false })
+    const refused = await commandNth(2, 'start')
+    expect(refused.kind).toBe('error')
+    expect(refused.kind === 'error' && refused.text).toContain('另一个教练实例正在运行')
+    await command(first, 'stop')
+  })
+
+  it('启动横幅直出控制台：发布目录与监听路径可见', async () => {
+    const plugin = await makePlugin()
+    const logged = consoleLog.mock.calls.map(c => String(c[0])).join('\n')
+    expect(logged).toContain(dir)
+    expect(logged).toContain('卡牌库就绪')
+    expect(logged).toContain('开始监听')
+    expect(logged).toContain(join(dir, 'Power.log'))
+    expect(logged).toMatch(/\[hscoach \d{2}:\d{2}:\d{2}\]/)
+    await command(plugin, 'stop')
+  }, 30000)
+
+  it('shutdown 清理未被轮询消费的残留触发文件（未监听时轮询跳过）', async () => {
+    await makePlugin({ autoStart: false })
+    const trigger = join(resolvePublishDir(dir), 'think-again.trigger')
+    await writeFile(trigger, 'x', 'utf8')
+    // 未监听：轮询守卫直接返回，触发文件留给 shutdown 清理
+    polls.forEach((poll) =>{  poll() })
+    expect(existsSync(trigger)).toBe(true)
+    for (const dispose of [...ctx.effects]) dispose()
+    expect(existsSync(trigger)).toBe(false)
   })
 
   it('resolvePublishDir 在 LOCALAPPDATA 缺失时回退 home 目录', () => {

@@ -205,6 +205,7 @@ export class CoachEngine {
         this.onEvent?.({
           type: 'advice-degraded',
           turn: snapshot.turn,
+          /* v8 ignore next -- 此处只兜发布链异常（fs 错误恒为 Error）；非 Error 臂不可构造 */
           reason: String(error instanceof Error ? error.message : error),
         })
       })

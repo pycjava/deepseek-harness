@@ -30,3 +30,12 @@ Status: implemented
 - 独立树契约在三处钉死：包自身的组合测试、`profile-hmr.spec.ts` 的无 HMR 断言、`app-boot` 的 `profile.spec.ts` 模板钉。
 - 13 MB 脱敏卡牌数据库随包载荷发布（`files: [data]`，已在 `check-workspace-constraints` 白名单）；不存在文件大小门禁，数据不参与覆盖率（只有 `src/**/*.ts` 计入）。
 - 上游 fixture 的隐私性迫使一次诚实的覆盖回退（国服端到端 golden）；上游套件覆盖的其余一切现在仅凭仓库即可运行，找回的 fixture 证明了整轮类型加固全程保持逐字段一致的行为。
+
+## 后续：单实例锁与控制台反馈（2026-09-18）
+
+真实 Windows 机器上的实跑暴露两个运维缺口。其一，独立树不向控制台打印任何内容（无 console-logger 行），用户看不出应用已启动，一分钟后又开了一份。其二，并发的教练实例共享发布目录的 `history.jsonl`/`stats.json`，每局重复记账；实跑排查把其中一个记账者定位到另一处安装的桌面版内嵌旧 hscoach profile 会话——旧代码天然不读锁，这正是锁必须在控制台上大声拒绝、而不是静默继续的原因。
+
+- `src/runtime/lock.ts` 以 `open(path, 'wx')` 原子创建抢占发布目录的 `hscoachd.lock`；锁内记录的 PID 存活（signal 0 探测，EPERM 视为存活）时拒绝启动，持有者已死或内容损坏则删除重试，崩溃残留自愈。文件名刻意沿用 NTEToolbox 原版守护进程的锁名，升级后无缝接管。同进程内第二个实例同样拒绝：PID 相同不代表同一实例。
+- 插件把生命周期事件直接桥接到控制台（`[hscoach HH:mm:ss]` 行：卡牌库就绪、监听路径、对局开始/结束、降级原因）。这棵树里 `ctx.logger` 没有接收端；插件即应用，控制台话语权归它。告警同时保留 `ctx.logger.warn` 通道供宿主侧诊断。
+- `hscoach stop` 与 tail 崩溃都释放锁（tail 崩溃不释放会把进程锁在自己的重启之外）；`start` 先等待上一次释放落定再重新抢占，stop/start 循环不会撞上自己的 unlink。
+- 锁冲突拒绝经 `/hscoach start` 返回错误、autoStart 启动时打印控制台告警；应用保持存活但不监听。

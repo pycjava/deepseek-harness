@@ -173,6 +173,46 @@ describe('PlayerManager 合并矩阵补齐', () => {
     expect(renamed).toBe(ai)
     expect(ai.name).toBe('新老板')
   })
+
+  it('实体位合并：名字引用带玩家 id 时既有引用补 playerId', () => {
+    // 诱饵名字先行，让后续名字注册不触发单名推断
+    const manager = new PlayerManager()
+    manager.createOrUpdatePlayer({ name: '丁' })
+    const left = manager.createOrUpdatePlayer({ name: '甲', entityId: 7 })
+    expect(left.playerId).toBeNull()
+    manager.createOrUpdatePlayer({ name: '乙', playerId: 4 })
+    // 乙引用获得实体 7 → 与甲引用合并，左侧补玩家 id
+    manager.createOrUpdatePlayer({ name: '乙', entityId: 7 })
+    expect(left.playerId).toBe(4)
+  })
+
+  it('实体位合并：右侧无玩家 id 时反向补名字（黄金快照兼容行为）', () => {
+    const manager = new PlayerManager()
+    manager.createOrUpdatePlayer({ name: '丁' })
+    const left = manager.createOrUpdatePlayer({ name: '甲', entityId: 7 })
+    const right = manager.createOrUpdatePlayer({ name: '乙' })
+    expect(right).not.toBe(left)
+    manager.createOrUpdatePlayer({ name: '乙', entityId: 7 })
+    expect(right.name).toBe('甲')
+  })
+
+  it('推断实体位命中已占用引用：登记名字（无别名跳过，带别名登记）', () => {
+    const plain = new PlayerManager()
+    plain.createOrUpdatePlayer({ entityId: 3 })
+    plain.createOrUpdatePlayer({ name: '甲', entityId: 2 })
+    const merged = plain.createOrUpdatePlayer({ name: '乙' })
+    expect(merged.name).toBe('乙')
+    expect(merged.entityId).toBe(3)
+
+    const tagged = new PlayerManager()
+    tagged.createOrUpdatePlayer({ entityId: 3 })
+    tagged.createOrUpdatePlayer({ name: '甲', entityId: 2 })
+    const taggedRef = tagged.createOrUpdatePlayer({ name: '乙#5678' })
+    expect(taggedRef.name).toBe('乙#5678')
+    expect(taggedRef.entityId).toBe(3)
+    // 别名登记后，裸名令牌可解析到同一引用
+    expect(tagged.createOrUpdatePlayer({ name: '乙' })).toBe(taggedRef)
+  })
 })
 
 describe('PlayerManager 合并级冲突', () => {

@@ -63,6 +63,7 @@ export class IncrementalTurnDetector {
 
   private resolvePlayerId(token: string): number | null {
     const eid = /^\d+$/.test(token) ? Number(token) : NAME_TO_ENTITY_ID[token]
+    /* v8 ignore next -- CURRENT_PLAYER_RE 限定 PlayerOne/PlayerTwo/数字，查表必中 */
     if (eid === undefined) return null
     return this.entityToPlayer.get(eid) ?? eid - 1
   }

@@ -26,7 +26,16 @@ The parity fixture `friendly_player_id_is_1.power.log` was recovered from the NT
 ## Consequences
 
 - `dsh --profile hscoach` boots a one-row application: no agents, no LLM host service, no sessions, no timer plugin — the daemon stays alive through the coach's own polling interval and shuts down through the standard bounded signal path.
-- `profile-mcp.spec.ts` gains an explicit hscoach case asserting zero MCP resource rows (it runs no agents), instead of the shared one-row assertion every agent-bearing template carries.
+- profile-mcp.spec.ts gains an explicit hscoach case asserting zero MCP resource rows (it runs no agents), instead of the shared one-row assertion every agent-bearing template carries.
 - The standalone-tree contract is pinned in three places: the package's own composition spec, the HMR-absence assertion in `profile-hmr.spec.ts`, and the template pin in `app-boot`'s `profile.spec.ts`.
 - The 13 MB sanitized card database ships in the package payload (`files: [data]`, allowlisted in `check-workspace-constraints`); no file-size gate exists, and the data is coverage-exempt because only `src/**/*.ts` count.
 - Upstream fixture privacy forced one honest coverage regression (the CN-server end-to-end golden); everything else the upstream suite covered now runs from the repository alone, with the recovered fixture proving field-exact behavior preservation across the entire type-hardening pass.
+
+## Follow-up: single-instance lock and console feedback (2026-09-18)
+
+A live run on a real Windows machine exposed two operational gaps. First, nothing in the standalone tree prints to the console (no console-logger row), so a user could not tell the app had booted and started a second copy a minute later. Second, concurrent coach instances share the publish directory's `history.jsonl`/`stats.json` and double-record every game; the live investigation traced one recorder to an old hscoach profile session embedded in a separately installed desktop build — old code ignores locks by construction, which is exactly why the lock had to fail loud on the console instead of silently proceeding.
+
+- `src/runtime/lock.ts` takes `hscoachd.lock` in the publish directory with `open(path, 'wx')` atomic create; an existing lock whose recorded PID is alive (signal-0 probe, EPERM counts as alive) refuses startup, and a dead or corrupt lock is unlinked and retried so crash residue self-heals. The filename deliberately matches the original NTEToolbox daemon's lock so an upgrade takes over seamlessly. Same-process second instances are refused too: an identical PID does not identify the same instance.
+- The plugin bridges lifecycle events to the console directly (`[hscoach HH:mm:ss]` lines: card database ready, watched log path, game start/end, degradation reasons). `ctx.logger` alone has no sink in this tree; the plugin is the application, so it owns its console voice. Warnings keep the `ctx.logger.warn` channel for host-side diagnostics.
+- `hscoach stop` and a crashed tail both release the lock (a tail crash without release would lock the process out of its own restart); `start` awaits the previous release before re-acquiring so a stop/start cycle cannot collide with its own unlink.
+- Lock-conflict refusals return an error through `/hscoach start` and a console warning on autoStart boot; the app stays up without tailing.

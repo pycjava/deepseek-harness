@@ -35,6 +35,8 @@ The coach starts watching Power.log immediately (`autoStart: true`). Static opti
 
 The publish directory defaults to `%LOCALAPPDATA%\com.ntetoolbox.client\hscoach` (the NTEToolbox Tauri identifier directory); `DSH_HSCOACH_PUBLISH_DIR` or an explicit `publishDir` overrides it. The overlay polls `advice.json`, `game_state.json`, and `stats.json` from there. Without an API key the coach still boots and replays the previous turn's advice, marked degraded.
 
+Before listening starts, the coach takes a single-instance lock `hscoachd.lock` in the publish directory (the file records the holder PID; a lock whose holder is dead is taken over, so crash residue self-heals). While a live instance holds the lock, startup refuses to listen and says why on the console. Builds that predate the lock ignore it and still double-record in parallel — when one game shows up twice in `history.jsonl`, look for another instance first, including old profile sessions embedded in the desktop app. The standalone tree mounts no console-logger, so lifecycle events (card database ready, watched log path, game start/end, degradation reasons) are printed to the console by the plugin itself.
+
 Use `dsh plugin --profile hscoach` to manage persistent external dependencies on top of this tree; profile, home, and ordered `--patch` files can replace the row or insert more rows above it. The shipped template applies patches only at startup.
 
 -----
@@ -58,6 +60,7 @@ The deterministic core is pure local computation: a Power.log parser over the sa
 | [`src/core/`](src/core/) | Deterministic core: parser, entities, state serialization, lethal, tail, history |
 | [`src/advice/`](src/advice/) | Direct-API advice provider and coach prompts |
 | [`src/runtime/engine.ts`](src/runtime/engine.ts) | Coaching engine: batching, turn triggers, latest-wins publication |
+| [`src/runtime/lock.ts`](src/runtime/lock.ts) | Publish-directory single-instance lock: PID liveness, stale-lock self-healing |
 | [`data/`](data/) | Bundled sanitized HearthstoneJSON card database (zhCN) |
 | — | No runtime invariant companion is published; the single inserted row owns its own runtime relationships, and independent observations cannot diverge from the deterministic core it alone computes. |
 | [`tests/parity.spec.ts`](tests/parity.spec.ts) | Golden-snapshot regression pin over the bundled game log |
