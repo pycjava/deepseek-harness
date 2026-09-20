@@ -28,7 +28,8 @@ import { CoachEngine } from './runtime/engine.ts'
 import type { AdviceProvider, EngineEvent } from './runtime/engine.ts'
 import { acquireInstanceLock, lockPath, readLockPid, type InstanceLock } from './runtime/lock.ts'
 import { DirectApiAdviceProvider } from './advice/directProvider.ts'
-import { COACH_MODES, DEFAULT_COACH_MODE } from './advice/prompts.ts'
+import { DEFAULT_MAX_TOKENS } from './advice/chatCompletion.ts'
+import { COACH_MODES, DEFAULT_COACH_MODE, type ChatTurn } from './advice/prompts.ts'
 import { aggregate, localIsoSeconds } from './core/history.ts'
 
 /** API root default (official DeepSeek; /v1-compatible endpoints come from config.baseURL). */
@@ -39,6 +40,28 @@ export const DEFAULT_MODEL = 'deepseek-chat'
 
 /** Default watchdog cap for advice generation, in milliseconds. */
 export const DEFAULT_ADVICE_TIMEOUT_MS = 15_000
+
+/** 回合建议注入的最近对话轮数上限（prompt 工程常量，非部署可变量）。 */
+const RECENT_CHAT_TURNS = 12
+
+/**
+ * 读取可选宿主服务 `hscoachChatContext`（独立 harness 的聊天历史）。
+ * 服务值必须是返回对话轮数组的函数；形状不符按缺席处理。
+ * @param ctx - 插件上下文。
+ * @returns 服务函数；缺席或形状不符时 null。
+ */
+const readChatSource = (ctx: Context): (() => unknown) | null => {
+  const value: unknown = ctx.get('hscoachChatContext')
+  return typeof value === 'function' ? (value as () => unknown) : null
+}
+
+/** 宿主提供的对话轮按 role/text 形状过滤后才注入建议 prompt。 */
+const isValidTurn = (turn: unknown): turn is ChatTurn => {
+  if (typeof turn !== 'object' || turn === null) return false
+  const { role, text } = turn as { role?: unknown; text?: unknown }
+  return (role === 'user' || role === 'coach')
+    && typeof text === 'string' && text.length > 0
+}
 
 /** Resolved plugin options after {@link resolveConfig} normalization. */
 export interface HsCoachPluginConfig {
@@ -56,6 +79,8 @@ export interface HsCoachPluginConfig {
   model: string
   /** Advice generation watchdog, in milliseconds. */
   adviceTimeoutMs: number
+  /** 单次调用的输出预算（tokens，含推理模型的思考链）。 */
+  maxTokens: number
   /** Card database data directory; empty = auto-detect (the package data/). */
   cardDataDir: string
   /** Whether to start watching Power.log as soon as dsh boots. */
@@ -81,6 +106,7 @@ export function resolveConfig(raw: Record<string, unknown> = {}): HsCoachPluginC
     baseURL: str(raw.baseURL) || process.env.DEEPSEEK_BASE_URL || DEFAULT_BASE_URL,
     model: str(raw.model) || DEFAULT_MODEL,
     adviceTimeoutMs: num(raw.adviceTimeoutMs) ?? DEFAULT_ADVICE_TIMEOUT_MS,
+    maxTokens: num(raw.maxTokens) ?? DEFAULT_MAX_TOKENS,
     cardDataDir: str(raw.cardDataDir),
     autoStart: raw.autoStart === undefined ? true : raw.autoStart === true,
   }
@@ -174,13 +200,29 @@ export class HsCoachPlugin {
       this.emitWarn('未配置 API key（config.apiKey 或环境变量 DEEPSEEK_API_KEY）——建议生成将降级')
     }
 
-    const provider: AdviceProvider = new DirectApiAdviceProvider({
+    const baseProvider: AdviceProvider = new DirectApiAdviceProvider({
       baseURL: this.cfg.baseURL,
       apiKey: this.cfg.apiKey,
       model: this.cfg.model,
       timeoutMs: this.cfg.adviceTimeoutMs,
+      maxTokens: this.cfg.maxTokens,
       fetchImpl: this.deps.fetch,
     })
+    // 可选宿主服务 hscoachChatContext（独立 harness 的聊天历史）：
+    // 提供时把最近对话注入每回合建议的 prompt；缺席（如 dsh profile
+    // 挂载）行为与从前完全一致。
+    const chatSource = readChatSource(this.ctx)
+    const provider: AdviceProvider = chatSource === null ? baseProvider : {
+      generate: (input) => {
+        const turns = chatSource()
+        return baseProvider.generate({
+          ...input,
+          recentChat: Array.isArray(turns)
+            ? turns.slice(-RECENT_CHAT_TURNS).filter(isValidTurn)
+            : [],
+        })
+      },
+    }
 
     this.engine = new CoachEngine({
       publishDir,
@@ -459,6 +501,46 @@ export class HsCoachPlugin {
     void this.engine.thinkAgain()
   }
 }
+
+// ── 复盘/重放对外接口（独立 harness 的 Web 层直接消费） ──────────
+//
+// 实时插件本身不需要这些导出；它们让 harness 不必复制任何内部装配：
+// 扫描历史对局（scanLogSessions）、按回合重放一局（createReplayController）、
+// 以及复用的卡牌库与炉石安装目录探测。
+
+export { CardDatabase, defaultDataDirs } from './core/cards.ts'
+export { hearthstoneDataDir, hearthstoneInstallDir, logConfigPath, powerLogPath } from './core/logConfig.ts'
+export { scanLogSessions, scanPowerLog } from './core/logScan.ts'
+export type { ScannedGame, ScannedSession } from './core/logScan.ts'
+export {
+  createReplayController,
+  formatProgress,
+  ReplayController,
+} from './replay/controller.ts'
+export type {
+  AdviceSource,
+  ReplayControllerOptions,
+  ReplayEvent,
+  ReplayPhase,
+  ReplayProgress,
+  ReplayRunInfo,
+  ReplaySessionOptions,
+} from './replay/controller.ts'
+export { planReplay } from './replay/splitter.ts'
+export type { ReplayGamePlan, ReplaySegment } from './replay/splitter.ts'
+export { fastForwardAdvice, hasAvailableAction, isTrivialTurn, trivialAdvice } from './replay/trivial.ts'
+export { AdviceCache, adviceCacheKey, stableStringify } from './replay/cache.ts'
+export type { AdviceCacheEntry } from './replay/cache.ts'
+export { PROMPT_VERSION } from './advice/prompts.ts'
+export { buildReviewPrompt, ReviewGenerator } from './replay/review.ts'
+export type { ReviewGeneratorOptions, ReviewInput, ReviewTurn } from './replay/review.ts'
+export {
+  DEFAULT_MAX_TOKENS,
+  MAX_TOKENS_CAP,
+  ProviderError,
+  requestChatContent,
+} from './advice/chatCompletion.ts'
+export type { ChatCompletionDeps } from './advice/chatCompletion.ts'
 
 /**
  * The Cordis function plugin: the loader hands the default export straight to

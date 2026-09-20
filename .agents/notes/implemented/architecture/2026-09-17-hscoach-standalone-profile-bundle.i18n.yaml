@@ -2,5 +2,5 @@
 # side as of the last confirmed-consistent state. Both languages carry equal authority;
 # after editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/architecture/2026-09-17-hscoach-standalone-profile-bundle.md
-2026-09-17-hscoach-standalone-profile-bundle.md: e92094fc42a4ea8cb8631a33492e8331e4c30eaa
-2026-09-17-hscoach-standalone-profile-bundle.zh.md: 40819f2f52d7b80b485a448a36d3e93b50c540e1
+2026-09-17-hscoach-standalone-profile-bundle.md: b7bff6c57a24d6cfa67c955f791b2fb65ae461df
+2026-09-17-hscoach-standalone-profile-bundle.zh.md: 95faee94f76d1efc1f7a94e3f7b0491134fd8eb2

@@ -48,3 +48,11 @@ The coach now runs as its own harness with no dsh CLI, desktop app, or `~/.dsh` 
 - `dataDirsFor(moduleUrl)` now returns both the source-layout and bundled-layout package roots, tried by existence as before; `defaultDataDirs` delegates with `import.meta.url`.
 - Verified end-to-end on the installed artifact: card database loads (35,713 entries) from the packed copy; lock refusal against a live holder; stale-lock takeover after the holder died; a demo game wrote every publish artifact exactly once; the think-again trigger was consumed; removing the demo directory replayed nothing. The profile launch path is unchanged.
 - The standalone deployment is a package consumer, not a repo surface: the repo ships no bin for it (application launch stays a dsh-profile right); the bundle README documents the pack-and-mount recipe.
+
+## Follow-up: chat-aware advice and the merged web timeline (2026-09-19)
+
+The standalone entry grew a web chat (pi-ai backed) and the web page merged advice and chat into one timeline. To make the merge matter, turn advice now knows what the player just asked: the entry provides an optional `hscoachChatContext` service returning the recent player-coach turns, and the plugin wraps its provider to inject the last 12 turns (shape-guarded) into each turn's user prompt as a 【最近对话】 section.
+
+- The seam is strictly optional: `readChatSource` treats a missing or non-function service as absent, non-array returns as empty, and each turn is validated (`user`/`coach` role plus non-empty text) before injection. Under any dsh profile no such service exists and advice generation is byte-identical to before.
+- The overlay publish contract is untouched — advice.json still flows from the same validated pipeline; the merge is presentation plus prompt context, never a bypass of field validation or the lethal solver.
+- Covered by prompts/directProvider/plugin specs (injection, filtering, both absence shapes); the standalone side supplies the service and re-packs the bundle as 0.1.6-alpha.3.

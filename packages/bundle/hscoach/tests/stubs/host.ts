@@ -24,6 +24,7 @@ export class FakeCommands {
 export class StubContext {
   readonly logs: Array<{ level: string; message: string }> = []
   readonly effects: Array<() => void> = []
+  private readonly services = new Map<string, unknown>()
 
   readonly logger = {
     info: (message: string) => this.logs.push({ level: 'info', message }),
@@ -33,6 +34,14 @@ export class StubContext {
   }
 
   readonly commands = new FakeCommands()
+
+  /** cordis 语义：登记服务值；get 按名读取，缺席返回 undefined。 */
+  provide(name: string, value: unknown): void {
+    this.services.set(name, value)
+  }
+  get(name: string): unknown {
+    return this.services.get(name)
+  }
 
   /** cordis 语义：立即调用 setup，其返回值（函数）作为卸载器。 */
   effect(setup: () => (() => void) | undefined, _label?: string): void {

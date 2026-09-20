@@ -51,7 +51,9 @@ Running outside dsh entirely is also supported: the plugin is self-contained, so
 
 The bundle's single insert is the complete application tree: one row mounting the bundle's own package. The plugin is a Cordis function plugin whose runtime keeps zero host-package imports — host types are `import type` only — so the row activates in any tree that can load the package. It owns its lifecycle through `ctx.effect` and a global polling interval, and registers `/hscoach` through a lazy `ctx.inject(['commands'])` that stays inert when no commands service exists.
 
-The deterministic core is pure local computation: a Power.log parser over the sanitized bundled card database, an incremental turn detector, a serializer that enforces hidden-information legality in code (opponent hands expose a count only; a tagged hand entity aborts serialization), and a conservative lethal solver (0-1 knapsack over the mana budget plus subset-sum taunt clearing — under-reporting over ever fabricating lethal). Advice generation is one direct `chat/completions` call with JSON output and a watchdog; the model output is field-validated before it reaches the publish contract.
+The deterministic core is pure local computation: a Power.log parser over the sanitized bundled card database, an incremental turn detector, a serializer that enforces hidden-information legality in code (opponent hands expose a count only; a tagged hand entity aborts serialization), and a conservative lethal solver (0-1 knapsack over the mana budget plus subset-sum taunt clearing — under-reporting over ever fabricating lethal). Advice generation is one direct `chat/completions` call with JSON output and a watchdog; the model output is field-validated before it reaches the publish contract. An optional host service `hscoachChatContext` injects the recent player-coach conversation into each turn's prompt (the standalone entry's web chat provides it; it is absent under any dsh profile, which disables the injection).
+
+Replay (review) reuses that pipeline instead of duplicating it: `src/replay/` slices a historical Power.log at CREATE_GAME and turn boundaries (`splitter.ts`) and feeds one batch at a time into its own engine, awaiting `idle()` after each so latest-wins never cancels a mid-game turn. Fast-forward ranges and turns with genuinely no available action (`trivial.ts`) skip the model, and identical snapshot + model + mode results are cached to disk (`cache.ts`) so re-watching a configuration is free while switching mode or model is a real call. The replay engine publishes into its own directory, so it coexists with live coaching without polluting it, and a post-game review is written from the per-turn archive (`review.ts`).
 
 ### Source map
 
@@ -60,9 +62,11 @@ The deterministic core is pure local computation: a Power.log parser over the sa
 | [`cordis.patch.yml`](cordis.patch.yml) | Complete standalone profile tree and its neutral defaults |
 | [`src/index.ts`](src/index.ts) | Plugin entry: config resolution, orchestration, command handling |
 | [`src/core/`](src/core/) | Deterministic core: parser, entities, state serialization, lethal, tail, history |
-| [`src/advice/`](src/advice/) | Direct-API advice provider and coach prompts |
+| [`src/advice/`](src/advice/) | Direct-API advice provider and coach prompts; `chatCompletion.ts` owns timeouts, non-200s and reasoning-truncation retries |
 | [`src/runtime/engine.ts`](src/runtime/engine.ts) | Coaching engine: batching, turn triggers, latest-wins publication |
 | [`src/runtime/lock.ts`](src/runtime/lock.ts) | Publish-directory single-instance lock: PID liveness, stale-lock self-healing |
+| [`src/replay/`](src/replay/) | Replay (review): turn slicing, fast-forward and trivial-turn skips, advice cache, post-game review |
+| [`src/core/logScan.ts`](src/core/logScan.ts) | Historical Power.log scan: list replayable games (class, turns, result) |
 | [`data/`](data/) | Bundled sanitized HearthstoneJSON card database (zhCN) |
 | — | No runtime invariant companion is published; the single inserted row owns its own runtime relationships, and independent observations cannot diverge from the deterministic core it alone computes. |
 | [`tests/parity.spec.ts`](tests/parity.spec.ts) | Golden-snapshot regression pin over the bundled game log |

@@ -128,6 +128,27 @@ describe('DirectApiAdviceProvider', () => {
     expect(body.messages?.[1]?.content).toContain('=== 当前回合')
   })
 
+  it('recentChat 进入建议 user prompt', async () => {
+    const { fetchImpl, recorded } = makeRecordingFetch(async () =>
+      okResponse(JSON.stringify({ kind: 'pass', headline: '过', why: '测试' })),
+    )
+    const { snapshot, friendly } = fixtureSnapshot()
+    await makeProvider(fetchImpl).generate({
+      snapshot,
+      friendlyPlayerId: friendly,
+      lethal: null,
+      coachMode: 'teach',
+      generation: 1,
+      recentChat: [{ role: 'user', text: '为什么不出伊瑟拉' }],
+    })
+    const body = JSON.parse(recorded[0]!.init.body) as {
+      messages?: Array<{ role?: string; content?: string }>
+    }
+    const user = body.messages?.find(m => m.role === 'user')?.content ?? ''
+    expect(user).toContain('【最近对话】')
+    expect(user).toContain('玩家：为什么不出伊瑟拉')
+  })
+
   it('围栏与夹带文本的 JSON 输出都能解析', async () => {
     const fenced = '```json\n' + JSON.stringify({ kind: 'pass', headline: '过', why: '没事可做' }) + '\n```'
     const p1 = makeProvider(makeRecordingFetch(async () => okResponse(fenced)).fetchImpl)
@@ -171,6 +192,56 @@ describe('DirectApiAdviceProvider', () => {
       })
     const provider = makeProvider(hanging, { timeoutMs: 30 })
     await expect(generateWith(provider)).rejects.toThrow(/超时/)
+  })
+
+  it('推理截断（finish_reason=length 空 content）→ 2 倍预算重试一次', async () => {
+    const adviceJson = JSON.stringify({ kind: 'play', headline: '下怪', why: '抢节奏' })
+    const responses = [
+      { choices: [{ finish_reason: 'length', message: { content: '' } }] },
+      { choices: [{ finish_reason: 'stop', message: { content: adviceJson } }] },
+    ]
+    const { fetchImpl, recorded } = makeRecordingFetch(async () => ({
+      ok: true,
+      status: 200,
+      json: async () => responses.shift(),
+    }))
+    const advice = await generateWith(makeProvider(fetchImpl))
+    expect(advice.headline).toBe('下怪')
+    expect(recorded.length).toBe(2)
+    const budgets = recorded.map(r => (JSON.parse(r.init.body) as { max_tokens?: number }).max_tokens)
+    expect(budgets).toEqual([8192, 16_384])
+  })
+
+  it('重试仍截断 → ProviderError 提示 max_tokens；非截断空响应不重试', async () => {
+    const alwaysLength = makeProvider(makeRecordingFetch(async () => ({
+      ok: true,
+      status: 200,
+      json: async () => ({ choices: [{ finish_reason: 'length', message: { content: '' } }] }),
+    })).fetchImpl)
+    await expect(generateWith(alwaysLength)).rejects.toThrow(/截断/)
+
+    const { fetchImpl, recorded } = makeRecordingFetch(async () => ({
+      ok: true,
+      status: 200,
+      json: async () => ({ choices: [{ finish_reason: 'stop', message: { content: '' } }] }),
+    }))
+    await expect(generateWith(makeProvider(fetchImpl))).rejects.toThrow(/缺少 choices/)
+    expect(recorded.length).toBe(1)
+  })
+
+  it('显式 maxTokens 覆盖默认预算，重试在其上翻倍', async () => {
+    const responses = [
+      { choices: [{ finish_reason: 'length', message: { content: '' } }] },
+      { choices: [{ finish_reason: 'stop', message: { content: '{"kind":"pass","headline":"过"}' } }] },
+    ]
+    const { fetchImpl, recorded } = makeRecordingFetch(async () => ({
+      ok: true,
+      status: 200,
+      json: async () => responses.shift(),
+    }))
+    await generateWith(makeProvider(fetchImpl, { maxTokens: 1000 }))
+    const budgets = recorded.map(r => (JSON.parse(r.init.body) as { max_tokens?: number }).max_tokens)
+    expect(budgets).toEqual([1000, 2000])
   })
 
   it('user prompt 含局面与斩杀评估，且不含对手手牌明细（隐藏信息）', () => {

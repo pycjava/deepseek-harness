@@ -140,6 +140,14 @@ async function settle(ms = 50): Promise<void> {
   await new Promise(r => setTimeout(r, ms))
 }
 
+/** 从记录的 fetch 调用里取 user prompt 文本。 */
+function userPromptOf(call: { init: { body: string } }): string {
+  const body = JSON.parse(call.init.body) as {
+    messages?: Array<{ role?: string; content?: string }>
+  }
+  return body.messages?.find(m => m.role === 'user')?.content ?? ''
+}
+
 beforeEach(async () => {
   dir = await mkdtemp(join(tmpdir(), 'hscoach-plugin-'))
   FakeTail.instances = []
@@ -179,6 +187,7 @@ describe('dsh-hscoach 插件', () => {
     expect(first.url).toBe('http://llm.test/chat/completions')
     expect(first.init.headers.authorization).toBe('Bearer test-key')
     expect((JSON.parse(first.init.body) as { model?: string }).model).toBe('test-model')
+    expect(userPromptOf(first)).not.toContain('【最近对话】')
     const advice = JSON.parse(await readFile(join(dir, 'advice.json'), 'utf-8')) as {
       advice: Advice
     }
@@ -189,6 +198,50 @@ describe('dsh-hscoach 插件', () => {
     expect(status.text).toContain('模型：test-model（http://llm.test）')
 
     await command(plugin, 'stop')
+  }, 30000)
+
+  it('hscoachChatContext 服务把最近对话注入建议 prompt（非法轮被过滤）', async () => {
+    ctx.provide('hscoachChatContext', () => [
+      { role: 'user', text: '为什么不出伊瑟拉' },
+      { role: 'coach', text: '这回合法力不够' },
+      { role: 'hacker', text: '越权内容' },
+      { text: 123 },
+      null,
+    ])
+    await makePlugin()
+    FakeTail.instances[0]!.feed(fixtureLines())
+    await waitUntil(() => fetchCalls.length > 0)
+    releaseAdvice!()
+    await settle()
+    const user = userPromptOf(fetchCalls[0]!)
+    expect(user).toContain('【最近对话】')
+    expect(user).toContain('玩家：为什么不出伊瑟拉')
+    expect(user).toContain('教练：这回合法力不够')
+    expect(user).not.toContain('越权内容')
+  }, 30000)
+
+  it('形状不符的 hscoachChatContext 按缺席处理（非函数 / 返回非数组）', async () => {
+    ctx.provide('hscoachChatContext', 'not-a-function')
+    const first = await makePlugin()
+    FakeTail.instances[0]!.feed(fixtureLines())
+    await waitUntil(() => fetchCalls.length > 0)
+    releaseAdvice!()
+    await settle()
+    expect(userPromptOf(fetchCalls[0]!)).not.toContain('【最近对话】')
+
+    // 停掉第一个实例（释放单实例锁）再换服务形状重启
+    await command(first, 'stop')
+    await settle()
+    fetchCalls.length = 0
+    releaseAdvice = null
+    adviceGate = new Promise<void>(r => (releaseAdvice = r))
+    ctx.provide('hscoachChatContext', () => 'not-an-array')
+    await makePlugin()
+    FakeTail.instances[1]!.feed(fixtureLines())
+    await waitUntil(() => fetchCalls.length > 0)
+    releaseAdvice!()
+    await settle()
+    expect(userPromptOf(fetchCalls[0]!)).not.toContain('【最近对话】')
   }, 30000)
 
   it('/hscoach think 与 think-again.trigger 都会触发重新推理', async () => {
@@ -430,6 +483,8 @@ describe('dsh-hscoach 插件收尾分支', () => {
       expect(config.apiKey).toBe('')
       expect(config.baseURL).toBe('https://api.deepseek.com')
       expect(config.adviceTimeoutMs).toBe(15_000)
+      expect(config.maxTokens).toBe(8192)
+      expect(resolveConfig({ maxTokens: 4096 }).maxTokens).toBe(4096)
       expect(config.autoStart).toBe(true)
       expect(resolveConfig({ autoStart: 'yes' as unknown as boolean }).autoStart).toBe(false)
     } finally {

@@ -2,5 +2,5 @@
 # side as of the last confirmed-consistent state. Both languages carry equal authority;
 # after editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write packages/bundle/hscoach/README.md
-README.md: c9afd0ebdcba4d8cbaef23ffb334be07ddb9f540
-README.zh.md: a35ec2616c81d7570550244804da9d2c112038d9
+README.md: 3fc38b96b78f691fa763005c62631a9458a02504
+README.zh.md: 8550281a3a71cec680dcfb2b796ed9543e323610

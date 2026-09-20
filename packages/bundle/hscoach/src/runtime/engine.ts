@@ -24,6 +24,7 @@ import {
   publishGameState,
   type Advice,
 } from '../core/trigger.ts'
+import type { ChatTurn } from '../advice/prompts.ts'
 
 /** 建议生成器抽象：dsh agentic 实现 / 测试桩二选一。 */
 export interface AdviceProvider {
@@ -34,6 +35,8 @@ export interface AdviceProvider {
     coachMode: string
     /** 最新代数；不等于当前代数时应尽快放弃（provider 自行取消 LLM）。 */
     generation: number
+    /** 宿主可选注入的最近玩家-教练对话；缺席时建议不感知聊天。 */
+    recentChat?: readonly ChatTurn[]
   }): Promise<Advice>
 }
 

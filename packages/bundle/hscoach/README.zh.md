@@ -51,7 +51,9 @@ dsh --profile hscoach
 
 bundle 的单次 insert 就是完整应用树：一行装载 bundle 自身所在的包。插件是 Cordis 函数插件，运行期保持零宿主包导入——宿主类型全部 `import type`——因此该行在任何能加载本包的树中都可激活。生命周期由 `ctx.effect` 与全局轮询定时器掌管；`/hscoach` 经惰性 `ctx.inject(['commands'])` 注册，commands 服务缺席时保持静默。
 
-确定性核心是纯本地计算：基于内置脱敏卡牌数据库的 Power.log 解析器、增量回合探测器、代码级强制隐藏信息合法性的序列化层（对手手牌只暴露数量；带标签的手牌实体中止序列化），以及保守的斩杀求解器（法力预算上的 0-1 背包 + 清嘲讽子集和——宁可漏报也绝不谎报斩杀）。建议生成是一次直连 `chat/completions` 调用（JSON 输出 + watchdog）；模型输出逐字段验证后才进入发布契约。
+确定性核心是纯本地计算：基于内置脱敏卡牌数据库的 Power.log 解析器、增量回合探测器、代码级强制隐藏信息合法性的序列化层（对手手牌只暴露数量；带标签的手牌实体中止序列化），以及保守的斩杀求解器（法力预算上的 0-1 背包 + 清嘲讽子集和——宁可漏报也绝不谎报斩杀）。建议生成是一次直连 `chat/completions` 调用（JSON 输出 + watchdog）；模型输出逐字段验证后才进入发布契约。可选宿主服务 `hscoachChatContext` 会把最近的玩家-教练对话注入每回合建议的 prompt（独立入口的网页聊天提供该服务；dsh profile 挂载时缺席，注入关闭）。
+
+复盘（重放）复用同一套管线而不复制它：`src/replay/` 把一份历史 Power.log 按 CREATE_GAME 与回合边界切成批次（`splitter.ts`），逐批喂给一个**自建引擎**并 `await idle()` 等建议落定——整份日志一次性灌入会被 latest-wins 作废中间回合，只有按回合等待才能让每个友方回合真正拿到建议。快进区间与"确实无动作"的回合（`trivial.ts`：无斩杀、无可用手牌、无攻击频率、英雄技能也不可用）不调用模型；同一「局面 + 模型 + 模式」的调用结果按哈希落盘缓存（`cache.ts`），因此换模式重看是真实调用、同配置重看是零成本。重放引擎的发布目录指到独立目录，与实时监听并存且互不污染；每轮重放独立存档（`games/<会话>__g<n>/runs/<轮次>/`：turns.jsonl + review.md + meta.json），同局重跑互不覆盖，终局后据逐回合档案生成一份赛后总结（`review.ts`）。
 
 ### 源码地图
 
@@ -60,9 +62,11 @@ bundle 的单次 insert 就是完整应用树：一行装载 bundle 自身所在
 | [`cordis.patch.yml`](cordis.patch.yml) | 完整独立 profile 树及其中性默认值 |
 | [`src/index.ts`](src/index.ts) | 插件入口：配置解析、编排、命令处理 |
 | [`src/core/`](src/core/) | 确定性核心：解析器、实体、状态序列化、斩杀、tail、战绩 |
-| [`src/advice/`](src/advice/) | 直连 API 建议生成器与教练 prompt |
+| [`src/advice/`](src/advice/) | 直连 API 建议生成器与教练 prompt；`chatCompletion.ts` 统一处理超时、非 200 与推理截断重试 |
 | [`src/runtime/engine.ts`](src/runtime/engine.ts) | 教练引擎：批处理、回合触发、latest-wins 发布 |
 | [`src/runtime/lock.ts`](src/runtime/lock.ts) | 发布目录单实例锁：PID 存活检测、陈旧锁自愈 |
+| [`src/replay/`](src/replay/) | 复盘（重放）：按回合切批、快进/琐碎回合跳过、建议缓存、赛后总结 |
+| [`src/core/logScan.ts`](src/core/logScan.ts) | 历史 Power.log 扫描：列出可复盘对局（职业/回合/胜负） |
 | [`data/`](data/) | 内置脱敏 HearthstoneJSON 卡牌数据库（简中） |
 | — | 未发布运行期 invariant 伴随包；唯一的插入行拥有自己的运行期关系，且独立观测不可能偏离它独自计算的确定性核心。 |
 | [`tests/parity.spec.ts`](tests/parity.spec.ts) | 基于内置对局日志的黄金快照回归钉 |

@@ -69,6 +69,54 @@ describe('getSystemPrompt', () => {
     expect(getSystemPrompt('不存在的模式')).toContain('【教学模式】')
     expect(getSystemPrompt('teach')).toContain('规则：')
   })
+
+  it('篇幅铁律注入所有模式：headline/why/steps 硬上限，深度讲解归对话', () => {
+    for (const mode of ['teach', 'compete', 'silent', undefined]) {
+      const prompt = getSystemPrompt(mode)
+      expect(prompt).toContain('【篇幅铁律】')
+      expect(prompt).toContain('≤20 字')
+      expect(prompt).toContain('最多 3 条')
+      expect(prompt).toContain('空串')
+    }
+    // 教学模式不再要求长篇 why/steps：讲解职责移交对话
+    expect(getSystemPrompt('teach')).toContain('深度讲解交给对话')
+    expect(getSystemPrompt('teach')).not.toContain('steps 写明顺序与理由')
+  })
+
+  it('资源计数与读牌铁律注入所有模式', () => {
+    for (const mode of ['teach', 'compete', 'silent', undefined]) {
+      const prompt = getSystemPrompt(mode)
+      expect(prompt).toContain('【资源计数】')
+      expect(prompt).toContain('非传说 2 张、传说 1 张')
+      expect(prompt).toContain('【读牌】')
+    }
+  })
+})
+
+describe('对手已用牌计数行', () => {
+  it('按 card_id 聚合计数，用过的张数多的排前面', () => {
+    const c = contract()
+    c.players['2']!.played_cards = [
+      card({ card_id: 'CS1', name: '火球术' }),
+      card({ card_id: 'CS2', name: '烈焰风暴' }),
+      card({ card_id: 'CS1', name: '火球术' }),
+    ]
+    const text = buildUserPrompt(c, 1)
+    expect(text).toContain('【对手已用牌】火球术×2、烈焰风暴×1（牌表上限：非传说 2 张、传说 1 张）')
+  })
+
+  it('card_id 缺失按名字聚合同名卡；对手未出牌时不输出该行', () => {
+    const byName = contract()
+    byName.players['2']!.played_cards = [
+      card({ card_id: null, name: '硬币' }),
+      card({ card_id: null, name: '硬币' }),
+    ]
+    expect(buildUserPrompt(byName, 1)).toContain('【对手已用牌】硬币×2')
+
+    const empty = contract()
+    empty.players['2']!.played_cards = []
+    expect(buildUserPrompt(empty, 1)).not.toContain('【对手已用牌】')
+  })
 })
 
 describe('buildUserPrompt', () => {
@@ -126,6 +174,18 @@ describe('buildUserPrompt', () => {
     expect(text).toContain('对手牌库已空：其下回合抽牌将受 2 点疲劳伤害')
     expect(text).not.toContain('【抽牌概率】')
     expect(text).toContain('对手已出牌：对手的牌')
+  })
+
+  it('recentChat 注入最近对话段；空数组与缺席不注入', () => {
+    const text = buildUserPrompt(contract(), 1, null, [
+      { role: 'user', text: '为什么不出伊瑟拉' },
+      { role: 'coach', text: '这回合法力不够' },
+    ])
+    expect(text).toContain('【最近对话】')
+    expect(text).toContain('玩家：为什么不出伊瑟拉')
+    expect(text).toContain('教练：这回合法力不够')
+    expect(buildUserPrompt(contract(), 1, null, [])).not.toContain('【最近对话】')
+    expect(buildUserPrompt(contract(), 1, null)).not.toContain('【最近对话】')
   })
 
   it('奥秘行：有候选池与无候选池两种渲染', () => {

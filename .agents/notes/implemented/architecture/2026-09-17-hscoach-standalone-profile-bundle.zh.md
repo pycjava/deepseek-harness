@@ -48,3 +48,11 @@ Status: implemented
 - `dataDirsFor(moduleUrl)` 现在同时返回源码布局与打包布局的包根，按存在性依次尝试（机制不变）；`defaultDataDirs` 以 `import.meta.url` 委托。
 - 在安装产物上端到端验证：卡牌库从打包副本加载（35713 张）；对存活持有者锁拒绝；持有者死亡后锁接管；演示对局每个发布产物恰好写一份；think-again 触发文件被消费；删除演示目录后零重放。profile 启动路径未变。
 - 独立部署是包的消费者，不是仓库面：仓库不为它提供 bin（应用启动权仍归 dsh profile）；bundle README 记录了 pack-and-mount 配方。
+
+## 后续：感知聊天的建议与合并的网页时间线（2026-09-19）
+
+独立入口长出了网页聊天（pi-ai 承载），网页把建议与聊合并成一条时间线。为了让合并产生实效，回合建议现在知道玩家刚问过什么：入口提供可选的 `hscoachChatContext` 服务返回最近的玩家-教练对话，插件包装自己的 provider，把最近 12 轮（形状校验后）作为【最近对话】段注入每回合的 user prompt。
+
+- 缝严格可选：`readChatSource` 把缺席或非函数的服务按缺席处理，返回非数组按空处理，每轮注入前校验形状（`user`/`coach` 角色且文本非空）。任何 dsh profile 下该服务不存在，建议生成与从前逐字节一致。
+- overlay 发布契约未动——advice.json 仍出自同一条验证管线；合并只发生在呈现与 prompt 上下文，绝不绕过字段验证或斩杀求解器。
+- prompts/directProvider/plugin 三处测试覆盖（注入、过滤、两种缺席形态）；独立端提供服务并以 0.1.6-alpha.3 重新打包。
